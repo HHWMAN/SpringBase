@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Users\ZX\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"></classPathEntry>
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <jdbcConnection
+                connectionURL="jdbc:mysql://localhost:3306/test?useSSL=false"
+                driverClass="com.mysql.jdbc.Driver" password="root" userId="root"/>
+        <javaModelGenerator targetPackage="com.zx.demo.domain.mybatis"
+                            targetProject="src\main\java"/>
+        <sqlMapGenerator targetPackage="com.zx.demo.dao.mybatis"
+                         targetProject="src\main\java"/>
+        <javaClientGenerator targetPackage="com.zx.demo.dao.mybatis"
+                             targetProject="src\main\java" type="XMLMAPPER"/>
+
+        
+        <table tableName="user">
+            <columnOverride column="id" property="id"/>
+            <columnOverride column="username" property="username"/>
+            <columnOverride column="password" property="password"/>
+            <columnOverride column="sex" property="sex"/>
+            <columnOverride column="age" property="deviceOs"/>
+            <columnOverride column="rec_creator" property="rec_creator"/>
+            <columnOverride column="rec_create_time" property="rec_create_time"/>
+            <columnOverride column="rec_revisor" property="rec_revisor"/>
+            <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
+        </table>        
+    </context>
+</generatorConfiguration>
