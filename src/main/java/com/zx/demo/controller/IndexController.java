@@ -2,16 +2,14 @@ package com.zx.demo.controller;
 
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.core.util.StatusPrinter;
-import com.zx.demo.dao.JdbcDataDAO;
+import com.zx.demo.dao.UserDao;
 import com.zx.demo.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -21,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class IndexController {
 
     @Autowired
-    private JdbcDataDAO JdbcDataDAOImpl;
+    private UserDao UserDaoImpl;
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -42,7 +40,10 @@ public class IndexController {
     public String getIndex() {
         logger.info("进行add");
         User user = new User();
-        JdbcDataDAOImpl.addUser(user);
+        user.setId("1");
+        user.setUsername("zx");
+        user.setPassowrd("zx");
+        UserDaoImpl.addUser(user);
         logger.info("add over");
         return "index";
     }

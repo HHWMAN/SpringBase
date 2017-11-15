@@ -5,7 +5,7 @@ import com.zx.demo.domain.User;
 /**
  * Created by ZX on 2017/11/14.
  */
-public interface JdbcDataDAO {
+public interface UserDao {
 
     void addUser(User user);
 
