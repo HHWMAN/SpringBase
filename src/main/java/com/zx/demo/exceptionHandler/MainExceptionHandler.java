@@ -15,9 +15,10 @@ public class MainExceptionHandler {
     protected final Logger logger = LoggerFactory.getLogger(MainExceptionHandler.class);
 
     @ExceptionHandler(value = {Exception.class})
-    public void test(Exception e){
+    public String test(Exception e){
         logger.info("输出异常");
         logger.error(e.toString());
+        return "redirect:error";
     }
 
 }

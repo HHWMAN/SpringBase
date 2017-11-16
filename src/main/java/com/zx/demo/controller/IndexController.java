@@ -43,7 +43,7 @@ public class IndexController {
 
     @GetMapping("/index")
     public String getIndex() {
-        int a = 1/0;
+        //int a = 1/0;
         logger.info("进行add");
         User user = new User();
         user.setId("1");
@@ -67,4 +67,10 @@ public class IndexController {
         return "demo";
     }
 
+    @RequestMapping("/error")
+    public String getError() {
+        logger.info("error");
+
+        return "error";
+    }
 }
