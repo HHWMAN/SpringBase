@@ -40,6 +40,18 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String getLogin() {
+        logger.info("进行登录");
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String getLogout() {
+        logger.info("进行登出");
+        return "login";
+    }
+
 
     @GetMapping("/index")
     public String getIndex() {
@@ -62,7 +74,7 @@ public class IndexController {
        /* LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
         StatusPrinter.print(lc);*/
            logger.info("进行add");
-        userService.addUser();
+       // userService.addUser();
           logger.info("add over");
         return "demo";
     }
