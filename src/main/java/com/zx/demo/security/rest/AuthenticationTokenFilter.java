@@ -2,7 +2,7 @@ package com.zx.demo.security.rest;
 
 
 
-import com.zx.demo.security.PlatMobileUserDetailsService;
+import com.zx.demo.security.AppUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,10 +31,10 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
     JsonWebTokenService jsonWebTokenService;
 
     @Autowired
-    private PlatMobileUserDetailsService platMobileUserDetailsService;
+    private AppUserDetailsService platMobileUserDetailsService;
 
     public AuthenticationTokenFilter(String restJwtHeader, JsonWebTokenService jsonWebTokenService,
-                                     PlatMobileUserDetailsService platMobileUserDetailsService) {
+                                     AppUserDetailsService platMobileUserDetailsService) {
         super();
         this.restJwtHeader = restJwtHeader;
         this.jsonWebTokenService = jsonWebTokenService;

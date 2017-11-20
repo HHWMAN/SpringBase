@@ -5,11 +5,11 @@ import com.zx.demo.domain.mybatis.User;
 import org.springframework.security.core.GrantedAuthority;
 
 
-public class PlatMobileUserRole implements GrantedAuthority {
+public class AppUserRole implements GrantedAuthority {
 	
 	private User platMobileUser;
 
-	public PlatMobileUserRole(User platMobileUser) {
+	public AppUserRole(User platMobileUser) {
 		this.platMobileUser=platMobileUser;
 	}
 
