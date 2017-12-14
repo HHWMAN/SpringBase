@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class JsonWebTokenService {
 
-    private String restJwtSecret;
+    private String restJwtSecret=TextCodec.BASE64.encode("zx");
 
-    public JsonWebTokenService(String restJwtSecret) {
+/*    public JsonWebTokenService(String restJwtSecret) {
         this.restJwtSecret = TextCodec.BASE64.encode(restJwtSecret);
-    }
+    }*/
 
     public String[] getUsernameAndTypeFromToken(String token) {
         String[] result= new String[2];

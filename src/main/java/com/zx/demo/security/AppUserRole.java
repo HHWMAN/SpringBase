@@ -15,7 +15,7 @@ public class AppUserRole implements GrantedAuthority {
 
 	@Override
 	public String getAuthority() {
-		return platMobileUser
+		return platMobileUser.getId();
 	}
 
 }

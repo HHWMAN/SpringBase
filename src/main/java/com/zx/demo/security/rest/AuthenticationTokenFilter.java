@@ -30,6 +30,10 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
     @Autowired
     JsonWebTokenService jsonWebTokenService;
 
+    public void setJsonWebTokenService(JsonWebTokenService jsonWebTokenService) {
+        this.jsonWebTokenService = jsonWebTokenService;
+    }
+
     @Autowired
     private AppUserDetailsService platMobileUserDetailsService;
 

@@ -20,15 +20,96 @@
 
         
         <table tableName="user">
-            <columnOverride column="id" property="id"/>
+            <columnOverride column="user_id" property="user_id"/>
             <columnOverride column="username" property="username"/>
             <columnOverride column="password" property="password"/>
             <columnOverride column="sex" property="sex"/>
-            <columnOverride column="age" property="deviceOs"/>
+            <columnOverride column="age" property="age"/>
+            <columnOverride column="isExpired" property="isExpired"/>
+            <columnOverride column="isEnabled" property="isEnabled"/>
+            <columnOverride column="isLocked" property="isLocked"/>
+            <columnOverride column="isCredentialsExpired" property="isCredentialsExpired"/>
             <columnOverride column="rec_creator" property="rec_creator"/>
             <columnOverride column="rec_create_time" property="rec_create_time"/>
             <columnOverride column="rec_revisor" property="rec_revisor"/>
             <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
-        </table>        
+        </table>
+
+
+        <table tableName="role">
+            <columnOverride column="role_id" property="role_id"/>
+            <columnOverride column="role_name" property="role_name"/>
+            <columnOverride column="role_description" property="role_description"/>
+            <columnOverride column="role_authority" property="role_authority"/>
+            <columnOverride column="isEnabled" property="isEnabled"/>
+            <columnOverride column="isSys" property="isSys"/>
+            <columnOverride column="rec_creator" property="rec_creator"/>
+            <columnOverride column="rec_create_time" property="rec_create_time"/>
+            <columnOverride column="rec_revisor" property="rec_revisor"/>
+            <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
+        </table>
+
+        <table tableName="authority">
+            <columnOverride column="authority_id" property="authority_id"/>
+            <columnOverride column="authority_sign" property="authority_sign"/>
+            <columnOverride column="authority_name" property="authority_name"/>
+            <columnOverride column="authority_description" property="authority_description"/>
+            <columnOverride column="authority_remind" property="authority_remind"/>
+            <columnOverride column="isEnabled" property="isEnabled"/>
+            <columnOverride column="isSys" property="isSys"/>
+            <columnOverride column="rec_creator" property="rec_creator"/>
+            <columnOverride column="rec_create_time" property="rec_create_time"/>
+            <columnOverride column="rec_revisor" property="rec_revisor"/>
+            <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
+        </table>
+
+
+        <table tableName="resource">
+            <columnOverride column="resource_id" property="resource_id"/>
+            <columnOverride column="resource_name" property="resource_name"/>
+            <columnOverride column="resource_type" property="resource_type"/>
+            <columnOverride column="resource_desc" property="resource_desc"/>
+            <columnOverride column="resource_path" property="resource_path"/>
+            <columnOverride column="isEnabled" property="isEnabled"/>
+            <columnOverride column="isSys" property="isSys"/>
+            <columnOverride column="rec_creator" property="rec_creator"/>
+            <columnOverride column="rec_create_time" property="rec_create_time"/>
+            <columnOverride column="rec_revisor" property="rec_revisor"/>
+            <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
+        </table>
+
+
+        <table tableName="user_role">
+            <columnOverride column="user_role_id" property="user_role_id"/>
+            <columnOverride column="user_id" property="user_id"/>
+            <columnOverride column="role_id" property="role_id"/>
+            <columnOverride column="rec_creator" property="rec_creator"/>
+            <columnOverride column="rec_create_time" property="rec_create_time"/>
+            <columnOverride column="rec_revisor" property="rec_revisor"/>
+            <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
+        </table>
+
+
+        <table tableName="role_authority">
+            <columnOverride column="role_authority_id" property="role_authority_id"/>
+            <columnOverride column="role_id" property="role_id"/>
+            <columnOverride column="rauthority_id" property="rauthority_id"/>
+            <columnOverride column="rec_creator" property="rec_creator"/>
+            <columnOverride column="rec_create_time" property="rec_create_time"/>
+            <columnOverride column="rec_revisor" property="rec_revisor"/>
+            <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
+        </table>
+
+
+        <table tableName="authority_resource">
+            <columnOverride column="authority_resource_id" property="authority_resource_id"/>
+            <columnOverride column="authority_id" property="authority_id"/>
+            <columnOverride column="resource_id" property="resource_id"/>
+            <columnOverride column="rec_creator" property="rec_creator"/>
+            <columnOverride column="rec_create_time" property="rec_create_time"/>
+            <columnOverride column="rec_revisor" property="rec_revisor"/>
+            <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
+        </table>
+
     </context>
 </generatorConfiguration>
