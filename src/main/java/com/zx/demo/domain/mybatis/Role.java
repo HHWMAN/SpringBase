@@ -330,4 +330,20 @@ public class Role {
     public void setRec_revisor_time(String rec_revisor_time) {
         this.rec_revisor_time = rec_revisor_time;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "role_id='" + role_id + '\'' +
+                ", role_name='" + role_name + '\'' +
+                ", role_description='" + role_description + '\'' +
+                ", role_authority='" + role_authority + '\'' +
+                ", isEnabled='" + isEnabled + '\'' +
+                ", isSys='" + isSys + '\'' +
+                ", rec_creator='" + rec_creator + '\'' +
+                ", rec_create_time='" + rec_create_time + '\'' +
+                ", rec_revisor='" + rec_revisor + '\'' +
+                ", rec_revisor_time='" + rec_revisor_time + '\'' +
+                '}';
+    }
 }

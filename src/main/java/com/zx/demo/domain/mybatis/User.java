@@ -429,4 +429,23 @@ public class User {
     public void setRec_revisor_time(String rec_revisor_time) {
         this.rec_revisor_time = rec_revisor_time;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id='" + user_id + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age='" + age + '\'' +
+                ", isExpired='" + isExpired + '\'' +
+                ", isEnabled='" + isEnabled + '\'' +
+                ", isLocked='" + isLocked + '\'' +
+                ", isCredentialsExpired='" + isCredentialsExpired + '\'' +
+                ", rec_creator='" + rec_creator + '\'' +
+                ", rec_create_time='" + rec_create_time + '\'' +
+                ", rec_revisor='" + rec_revisor + '\'' +
+                ", rec_revisor_time='" + rec_revisor_time + '\'' +
+                '}';
+    }
 }

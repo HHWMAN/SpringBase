@@ -363,4 +363,21 @@ public class Authority {
     public void setRec_revisor_time(String rec_revisor_time) {
         this.rec_revisor_time = rec_revisor_time;
     }
+
+    @Override
+    public String toString() {
+        return "Authority{" +
+                "authority_id='" + authority_id + '\'' +
+                ", authority_sign='" + authority_sign + '\'' +
+                ", authority_name='" + authority_name + '\'' +
+                ", authority_description='" + authority_description + '\'' +
+                ", authority_remind='" + authority_remind + '\'' +
+                ", isEnabled='" + isEnabled + '\'' +
+                ", isSys='" + isSys + '\'' +
+                ", rec_creator='" + rec_creator + '\'' +
+                ", rec_create_time='" + rec_create_time + '\'' +
+                ", rec_revisor='" + rec_revisor + '\'' +
+                ", rec_revisor_time='" + rec_revisor_time + '\'' +
+                '}';
+    }
 }

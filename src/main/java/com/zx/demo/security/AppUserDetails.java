@@ -1,27 +1,27 @@
 package com.zx.demo.security;
 
-import com.zx.demo.dao.mybatis.RoleMapper;
-import com.zx.demo.dao.mybatis.UserMapper;
-import com.zx.demo.domain.mybatis.User;
-import com.zx.demo.domain.mybatis.UserRoleExample;
+import com.zx.demo.dao.mybatis.*;
+import com.zx.demo.domain.mybatis.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 
 
-@Component
 public class AppUserDetails implements UserDetails {
 
 	@Autowired
-	UserMapper userMapper;
+	UserRoleMapper userRoleMapper;
 
 	@Autowired
-	RoleMapper roleMapper;
+	RoleAuthorityMapper roleAuthorityMapper;
+
+	@Autowired
+	AuthorityMapper authorityMapper;
 	
 
 	private User appUser;   //对应数据库中的用户
@@ -30,45 +30,62 @@ public class AppUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-        //通过用户名查role
+		List<AppUserAuthority> authorityList = new ArrayList<AppUserAuthority>();
+
+        //通过用户id查user、role对应
         String userId = appUser.getUser_id();
 		UserRoleExample userRoleExample = new UserRoleExample();
 		userRoleExample.createCriteria().andUser_idEqualTo(userId);
+		List<UserRole> userRoleList = userRoleMapper.selectByExample(userRoleExample);
 
-		//查询所有role对应的权限
+		//处理得到的对应关系，获得role
+		List<Role> roleList = new ArrayList<Role>();
+		for(UserRole userRole:userRoleList){
+			String roleId = userRole.getRole_id();
+			//通过role,查询对应的权限id
+			RoleAuthorityExample roleAuthorityExample = new RoleAuthorityExample();
+			roleAuthorityExample.createCriteria().andRole_idEqualTo(roleId);
+			List<RoleAuthority> roleAuthorities =  roleAuthorityMapper.selectByExample(roleAuthorityExample);
 
+			for(RoleAuthority roleAuthority:roleAuthorities){
 
-		return null;
+				String authorityId = roleAuthority.getRauthority_id();
+				Authority authority = authorityMapper.selectByPrimaryKey(authorityId);
+				authorityList.add(new AppUserAuthority(authority));
+			}
+		}
+
+		return authorityList;
 	}
 
 	@Override
 	public String getPassword() {
-		return null;
+		return appUser.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return null;
+		return appUser.getUsername();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return false;
+		return "N".equals(appUser.getIsExpired())?true:false;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return false;
+		return "N".equals(appUser.getIsLocked())?true:false;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return false;
+		return "N".equals(appUser.getIsCredentialsExpired())?true:false;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return false;
+		return "Y".equals(appUser.getIsEnabled())?true:false;
 	}
 
 
@@ -80,9 +97,9 @@ public class AppUserDetails implements UserDetails {
 		this.appUser = appUser;
 	}
 
-	public Collection<GrantedAuthority> getAppUserAuthorities() {
+	/*public Collection<GrantedAuthority> getAppUserAuthorities() {
 		return appUserAuthorities;
-	}
+	}*/
 
 	public void setAppUserAuthorities(Collection<GrantedAuthority> appUserAuthorities) {
 		this.appUserAuthorities = appUserAuthorities;

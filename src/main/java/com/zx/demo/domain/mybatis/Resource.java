@@ -363,4 +363,21 @@ public class Resource {
     public void setRec_revisor_time(String rec_revisor_time) {
         this.rec_revisor_time = rec_revisor_time;
     }
+
+    @Override
+    public String toString() {
+        return "Resource{" +
+                "resource_id='" + resource_id + '\'' +
+                ", resource_name='" + resource_name + '\'' +
+                ", resource_type='" + resource_type + '\'' +
+                ", resource_desc='" + resource_desc + '\'' +
+                ", resource_path='" + resource_path + '\'' +
+                ", isEnabled='" + isEnabled + '\'' +
+                ", isSys='" + isSys + '\'' +
+                ", rec_creator='" + rec_creator + '\'' +
+                ", rec_create_time='" + rec_create_time + '\'' +
+                ", rec_revisor='" + rec_revisor + '\'' +
+                ", rec_revisor_time='" + rec_revisor_time + '\'' +
+                '}';
+    }
 }

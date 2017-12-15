@@ -16,7 +16,7 @@ public class UserService {
 
     public void addUser(){
         User user = new User();
-        user.setId("2");
+        user.setUser_id("2");
         user.setUsername("zx_mybatis");
         user.setPassword("zx_mybatis");
         /*user.setSex("m");
