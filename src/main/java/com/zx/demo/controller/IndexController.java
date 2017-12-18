@@ -3,7 +3,9 @@ package com.zx.demo.controller;
 //import ch.qos.logback.classic.LoggerContext;
 //import ch.qos.logback.core.util.StatusPrinter;
 import com.zx.demo.dao.UserDao;
-import com.zx.demo.domain.User;
+import com.zx.demo.dao.mybatis.UserMapper;
+
+import com.zx.demo.domain.mybatis.User;
 import com.zx.demo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class IndexController {
+
+    @Autowired
+    UserMapper userMapper;
 
     @Autowired
     private UserDao UserDaoImpl;
@@ -58,10 +63,11 @@ public class IndexController {
         //int a = 1/0;
         logger.info("进行add");
         User user = new User();
-        user.setId("1");
-        user.setUsername("zx");
-        user.setPassowrd("zx");
-        UserDaoImpl.addUser(user);
+        user.setUser_id("2");
+        user.setUsername("zx2");
+        user.setPassword("zx2");
+        /*UserDaoImpl.addUser(user);*/
+        userMapper.insert(user);
         logger.info("add over");
         return "index";
     }

@@ -1,21 +1,33 @@
 package com.zx.demo.security;
 
-import com.zx.demo.dao.mybatis.*;
+import com.zx.demo.dao.UserDao;
+import com.zx.demo.dao.impl.UserDaoImpl;
+
+import com.zx.demo.dao.mybatis.AuthorityMapper;
+import com.zx.demo.dao.mybatis.RoleAuthorityMapper;
+import com.zx.demo.dao.mybatis.UserRoleMapper;
 import com.zx.demo.domain.mybatis.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 
+@Component
 public class AppUserDetails implements UserDetails {
 
 	@Autowired
-	UserRoleMapper userRoleMapper;
+	UserDao userDaoImpl;
+
+	@Autowired
+	private UserRoleMapper userRoleMapper;
 
 	@Autowired
 	RoleAuthorityMapper roleAuthorityMapper;
@@ -25,7 +37,7 @@ public class AppUserDetails implements UserDetails {
 	
 
 	private User appUser;   //对应数据库中的用户
-	private Collection<GrantedAuthority>  appUserAuthorities; //应用用户权限
+	//private Collection<GrantedAuthority>  appUserAuthorities; //应用用户权限
 
 
 	@Override
@@ -101,7 +113,36 @@ public class AppUserDetails implements UserDetails {
 		return appUserAuthorities;
 	}*/
 
-	public void setAppUserAuthorities(Collection<GrantedAuthority> appUserAuthorities) {
-		this.appUserAuthorities = appUserAuthorities;
+
+	public UserDao getUserDaoImpl() {
+		return userDaoImpl;
+	}
+
+	public void setUserDaoImpl(UserDao userDaoImpl) {
+		this.userDaoImpl = userDaoImpl;
+	}
+
+	public UserRoleMapper getUserRoleMapper() {
+		return userRoleMapper;
+	}
+
+	public void setUserRoleMapper(UserRoleMapper userRoleMapper) {
+		this.userRoleMapper = userRoleMapper;
+	}
+
+	public RoleAuthorityMapper getRoleAuthorityMapper() {
+		return roleAuthorityMapper;
+	}
+
+	public void setRoleAuthorityMapper(RoleAuthorityMapper roleAuthorityMapper) {
+		this.roleAuthorityMapper = roleAuthorityMapper;
+	}
+
+	public AuthorityMapper getAuthorityMapper() {
+		return authorityMapper;
+	}
+
+	public void setAuthorityMapper(AuthorityMapper authorityMapper) {
+		this.authorityMapper = authorityMapper;
 	}
 }

@@ -13,11 +13,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public class AppUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	UserMapper userMapper;
+
+	@Autowired
+	AppUserDetails appUserDetails;
 
 
 	@Override
@@ -26,13 +29,14 @@ public class AppUserDetailsService implements UserDetailsService {
 		userExample.createCriteria().andUsernameEqualTo(userName);
         List<User> userList = userMapper.selectByExample(userExample);
         if(userList.size()<1){
-			throw new BadCredentialsException("无此用户");
+			throw new UsernameNotFoundException("无此用户");
 		}else if(userList.size()>1){
 			throw new BadCredentialsException("对应多个用户");
 		}
-		AppUserDetails userDetails = new AppUserDetails();
-        userDetails.setAppUser(userList.get(0));
-        userDetails.getAuthorities();
-		return userDetails;
+
+		User user = userList.get(0);
+		appUserDetails.setAppUser(user);
+       // userDetails.getAuthorities();
+		return appUserDetails;
 	}
 }
