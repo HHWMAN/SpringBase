@@ -20,19 +20,22 @@
 
 
     <http auto-config="true" use-expressions="true">
-    <intercept-url pattern="/login" access="permitAll"/>
-   <!-- <intercept-url pattern="/index" access="permitAll"/>-->
-    <intercept-url pattern="/static/**" access="permitAll"/>
-    <intercept-url pattern="/**" access="hasRole('admin')"/>
-    <form-login
-            login-page="/login"
-            authentication-failure-url="/login"
-            authentication-success-forward-url="/demo"
-    />
-    <logout
-            logout-url="/logout"
-            logout-success-url="/login"/>
-</http>
+        <intercept-url pattern="/login" access="permitAll()"/>
+        <intercept-url pattern="/index" access="permitAll()"/>
+        <intercept-url pattern="/static/**" access="permitAll()"/>
+        <intercept-url pattern="/favicon.ico" access="permitAll()"/>
+        <!--    <intercept-url pattern="/index" access="hasRole('admin')"/>-->
+        <intercept-url pattern="/**" access="hasRole('ADMIN')"/>
+        <form-login
+                login-page="/login"
+                authentication-failure-url="/login"
+                authentication-success-forward-url="/demo"
+        />
+        <csrf disabled="true"></csrf>
+        <logout
+                logout-url="/logout"
+                logout-success-url="/login"/>
+    </http>
 
 
     <authentication-manager >
