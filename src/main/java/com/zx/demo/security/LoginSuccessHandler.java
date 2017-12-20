@@ -1,5 +1,6 @@
 package com.zx.demo.security;
 
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +26,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	            response.sendRedirect("index");
 	        }else if(roles.contains("ADMIN")){
 	        	response.sendRedirect("demo");
-	        }
+	        }else{
+				System.out.println("权限异常");
+				throw new BadCredentialsException("权限异常");
+			}
 
 		AppUserDetails user = (AppUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		System.out.println(user.getUsername());
