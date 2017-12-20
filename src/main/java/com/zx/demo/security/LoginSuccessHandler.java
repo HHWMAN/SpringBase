@@ -2,6 +2,7 @@ package com.zx.demo.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -20,14 +21,14 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			throws IOException, ServletException {
 
 		   Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-	        if (roles.contains("user")) {
+	        if (roles.contains("USER")) {
 	            response.sendRedirect("index");
-	        }else if(roles.contains("admin")){
-	        	response.sendRedirect("index");
+	        }else if(roles.contains("ADMIN")){
+	        	response.sendRedirect("demo");
 	        }
 
-/*		PlatMobileUserDetails user = (PlatMobileUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(user.getUsername());*/
+		AppUserDetails user = (AppUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(user.getUsername());
 
 
 	}

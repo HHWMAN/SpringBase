@@ -10,6 +10,7 @@ import com.zx.demo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,11 +40,6 @@ public class IndexController {
         return "hello, world! This com from spring!";
     }
 
-    @GetMapping("/")
-    public String firstPage() {
-        logger.info("/");
-        return "index";
-    }
 
     @GetMapping("/login")
     public String getLogin() {
@@ -57,17 +53,17 @@ public class IndexController {
         return "login";
     }
 
-
+    @PreAuthorize("admin")
     @GetMapping("/index")
     public String getIndex() {
         //int a = 1/0;
         logger.info("进行add");
-        User user = new User();
+       /* User user = new User();
         user.setUser_id("2");
         user.setUsername("zx2");
         user.setPassword("zx2");
-        /*UserDaoImpl.addUser(user);*/
-        userMapper.insert(user);
+        *//*UserDaoImpl.addUser(user);*//*
+        userMapper.insert(user);*/
         logger.info("add over");
         return "index";
     }

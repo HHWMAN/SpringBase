@@ -16,14 +16,14 @@
 
 
 
-    <bean id="userDetailService" class="com.zx.demo.security.AppUserDetailsService">
+    <bean id="userDetailService"  class="com.zx.demo.security.AppUserDetailsService">
 
     </bean>
 
 
     <bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
         <property name="hideUserNotFoundExceptions" value="false" />
-        <property name="userDetailsService" ref="userDetailService" />
+        <property name="userDetailsService" ref="userDetailService"  />
        <!-- <property name="passwordEncoder" ref="passwordEncode" />
         <property name="saltSource" ref="saltSource" />-->
     </bean>
@@ -34,6 +34,7 @@
     <bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
         <property name="userPropertyToUse" value="username"/>
     </bean>-->
+
 
 
 
