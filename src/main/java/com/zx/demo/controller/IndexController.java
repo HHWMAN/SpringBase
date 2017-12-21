@@ -5,8 +5,7 @@ package com.zx.demo.controller;
 import com.zx.demo.dao.UserDao;
 import com.zx.demo.dao.mybatis.UserMapper;
 
-import com.zx.demo.domain.mybatis.User;
-import com.zx.demo.security.AppUserAuthority;
+import com.zx.demo.security.AppRoleAuthority;
 import com.zx.demo.security.AppUserDetails;
 import com.zx.demo.service.UserService;
 import org.slf4j.Logger;
@@ -81,8 +80,12 @@ public class IndexController {
 
         if (principal instanceof AppUserDetails) {
             Collection<? extends GrantedAuthority> test = ((AppUserDetails)principal).getAuthorities();
-           String authority = ((AppUserAuthority)((java.util.ArrayList)test).get(0)).getAuthority();
-            logger.info(authority);
+            String authority="";
+            for(int i=0;i<test.size();i++) {
+               authority = ((GrantedAuthority) ((java.util.ArrayList) test).get(i)).getAuthority();
+               logger.info(authority);
+            }
+
         } else {
             String username = principal.toString();
         }

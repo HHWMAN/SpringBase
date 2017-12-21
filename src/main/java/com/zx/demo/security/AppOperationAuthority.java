@@ -1,22 +1,21 @@
 package com.zx.demo.security;
 
 
-import com.zx.demo.domain.mybatis.*;
+import com.zx.demo.domain.mybatis.Authority;
 import org.springframework.security.core.GrantedAuthority;
 
 
+public class AppOperationAuthority implements GrantedAuthority {
 
-public class AppUserAuthority implements GrantedAuthority {
-	
 	private Authority authority;
 
-	public AppUserAuthority(Authority authority) {
+	public AppOperationAuthority(Authority authority) {
 		this.authority=authority;
 	}
 
 	@Override
 	public String getAuthority() {
-		   return authority.getAuthority_sign();
+		return authority.getAuthority_name();
 	}
 
 	@Override

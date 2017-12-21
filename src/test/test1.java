@@ -2,7 +2,7 @@ import com.zx.demo.dao.mybatis.AuthorityMapper;
 import com.zx.demo.dao.mybatis.RoleAuthorityMapper;
 import com.zx.demo.dao.mybatis.UserRoleMapper;
 import com.zx.demo.domain.mybatis.*;
-import com.zx.demo.security.AppUserAuthority;
+import com.zx.demo.security.AppRoleAuthority;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class test1 {
     @Test
     public void testUser(){
 
-        List<AppUserAuthority> authorityList = new ArrayList<AppUserAuthority>();
+        List<AppRoleAuthority> authorityList = new ArrayList<AppRoleAuthority>();
 
         //通过用户id查user、role对应
         String userId = "1";
@@ -56,7 +56,7 @@ public class test1 {
 
                 String authorityId = roleAuthority.getRauthority_id();
                 Authority authority = authorityMapper.selectByPrimaryKey(authorityId);
-                authorityList.add(new AppUserAuthority(authority));
+              /*  authorityList.add(new AppRoleAuthority(authority));*/
             }
         }
         System.out.println("开始输出");
