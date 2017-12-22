@@ -9,6 +9,8 @@
 
     <beans:import resource="applicationSecurityBean.xml"></beans:import>
 
+    <!--启动方法权限验证-->
+    <global-method-security secured-annotations="enabled" pre-post-annotations="enabled" jsr250-annotations="enabled" />
 
     <!-- 配置不过滤的资源（静态资源及登录相关） -->
     <http pattern="/**/*.css" security="none"/>

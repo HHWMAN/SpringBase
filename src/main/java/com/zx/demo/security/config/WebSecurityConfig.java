@@ -1,3 +1,4 @@
+/*
 package com.zx.demo.security.config;
 
 
@@ -11,9 +12,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+*/
 /**
  * Created by ZX on 2017/11/17.
- */
+ *//*
+
 
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -31,7 +34,8 @@ public class WebSecurityConfig {
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .antMatcher("/*")
+                    .antMatcher("*/
+/*")
                     .authorizeRequests()
                     .anyRequest().hasRole("ADMIN")
                     .and()
@@ -51,4 +55,4 @@ public class WebSecurityConfig {
                     .formLogin();
         }
     }
-}
+}*/
