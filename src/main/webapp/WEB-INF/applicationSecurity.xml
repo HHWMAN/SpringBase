@@ -9,8 +9,15 @@
 
     <beans:import resource="applicationSecurityBean.xml"></beans:import>
 
+
     <!--启动方法权限验证-->
-    <global-method-security secured-annotations="enabled" pre-post-annotations="enabled" jsr250-annotations="enabled" />
+    <global-method-security secured-annotations="enabled" pre-post-annotations="enabled" jsr250-annotations="enabled" >
+        <!--定义安全切面-->
+       <!-- <protect-pointcut expression="execution(* com.mycompany.*Service.*(..))"
+                              access="ROLE_USER"/>-->
+
+    </global-method-security>
+
 
     <!-- 配置不过滤的资源（静态资源及登录相关） -->
     <http pattern="/**/*.css" security="none"/>
@@ -22,9 +29,9 @@
     <http pattern="/js/*.js" security="none"/>
 
 
-    <http  use-expressions="true">
+    <http  use-expressions="true" >
         <intercept-url pattern="/login" access="permitAll"/>
-        <intercept-url pattern="/index" access="permitAll"/>
+        <intercept-url pattern="/index" access="permitAll" />
         <intercept-url pattern="/error" access="permitAll"/>
         <intercept-url pattern="/error" access="permitAll"/>
         <intercept-url pattern="/static/**" access="permitAll"/>
@@ -42,7 +49,7 @@
 
         <csrf disabled="true"></csrf>
 
-        <session-management invalid-session-url="/login" >
+        <session-management invalid-session-url="/login" session-fixation-protection="newSession">
             <concurrency-control max-sessions="100000"/>
         </session-management>
 

@@ -58,7 +58,7 @@ public class IndexController {
         return "login";
     }
 
-    @PreAuthorize("hasAuthority('USER')")
+  /*  @PreAuthorize("hasAuthority('USER')")*/
     @GetMapping("/index")
     public String getIndex() {
         //int a = 1/0;
