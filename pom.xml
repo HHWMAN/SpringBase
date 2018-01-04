@@ -37,16 +37,27 @@
                     <include>**/*.properties</include>
                 </includes>
             </resource>
-            <!--<resource>
-                &lt;!&ndash;需要打包的目录&ndash;&gt;
+
+            <resource>
+                <!--需要打包的目录-->
                 <directory>src/main/resources</directory>
-                &lt;!&ndash;目录中的文件类型&ndash;&gt;
+                <!--目录中的文件类型-->
                 <includes>
                     <include>**/*.xml</include>
                     <include>**/*.properties</include>
                 </includes>
-            </resource>-->
+            </resource>
 
+            <resource>
+                <!--需要打包的目录-->
+                <directory>src/main/webapp</directory>
+                <!--目录中的文件类型-->
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.js</include>
+                </includes>
+            </resource>
         </resources>
     </build>
 

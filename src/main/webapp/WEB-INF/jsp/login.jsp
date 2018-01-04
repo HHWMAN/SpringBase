@@ -2,11 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
+
+
 <html>
 <head>
 	<meta charset="UTF-8">
 	<meta name="renderer" content="webkit">
 	<title>登录页</title>
+	<script>
+        ctx = "${ctx}";
+
+	</script>
+	<script type="text/javascript" src="./jst/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="${ctx}./js/jquery.min.js"></script>
+	<script type="text/javascript" src="${ctx}/./jst/jquery.min.js"></script>
+	<script type="text/javascript" src="${ctx}/../js/jquery.min.js"></script>
+	<script type="text/javascript" src="${ctx}/js/jquery.min.js"></script>
+	<script type="text/javascript" src="${ctx}/jst/jquery.min.js"></script>
+	<script type="text/javascript" src="${ctx}/jst/j"></script>
 
 
 </head>

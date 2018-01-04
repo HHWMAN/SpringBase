@@ -26,49 +26,58 @@
     <http pattern="/**/*.gif" security="none"/>
     <http pattern="/**/*.png" security="none"/>
     <http pattern="/**/*.jsp" security="none"/>
-    <http pattern="/js/*.js" security="none"/>
+    <http pattern="/**/*.js" security="none"/>
 
 
-    <http  use-expressions="true" >
+    <http  use-expressions="true" auto-config="false" >
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/index" access="permitAll" />
+        <intercept-url pattern="/jst/**" access="permitAll" />
         <intercept-url pattern="/error" access="permitAll"/>
         <intercept-url pattern="/error" access="permitAll"/>
         <intercept-url pattern="/static/**" access="permitAll"/>
         <intercept-url pattern="/favicon.ico" access="permitAll"/>
-        <intercept-url pattern="/**" access="hasAuthority('OP_ADMIN')"/>
+       <!-- <intercept-url pattern="/**" access="hasAuthority('OP_ADMIN')"/>-->
+        <intercept-url pattern="/**" access="permitAll"/>
       <!--  <intercept-url pattern="/**" access="hasRole('ADMIN')"/>-->
+
+       <!-- <access-denied-handler />-->
 
         <form-login
                 login-page="/login"
                 authentication-failure-url="/login"
                 authentication-success-forward-url="/demo"
+
         />
 
         <http-basic/>
 
         <csrf disabled="true"></csrf>
 
-        <session-management invalid-session-url="/login" session-fixation-protection="newSession">
-            <concurrency-control max-sessions="100000"/>
+        <session-management invalid-session-url="/login"  session-fixation-protection="newSession">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
         </session-management>
 
-        <remember-me user-service-ref="userDetailService" remember-me-cookie="appCk" key="zx" token-validity-seconds="10000" />
+        <remember-me  remember-me-cookie="appCk" key="zx" token-validity-seconds="10000" />
 
         <logout
                 logout-url="/logout"
                 logout-success-url="/login"/>
 
         <access-denied-handler error-page="/error"/>
+
+
+       <!-- <custom-filter ref=""/>-->
     </http>
 
 
-    <authentication-manager erase-credentials="false" >
+    <authentication-manager  erase-credentials="false" >
         <authentication-provider ref="authenticationProvider">
                <!--<password-encoder ref="passwordEncode">
 
                </password-encoder>-->
         </authentication-provider>
     </authentication-manager>
+
 
 </beans:beans>
