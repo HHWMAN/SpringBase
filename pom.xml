@@ -48,16 +48,16 @@
                 </includes>
             </resource>
 
-            <resource>
-                <!--需要打包的目录-->
+          <!--  <resource>
+                &lt;!&ndash;需要打包的目录&ndash;&gt;
                 <directory>src/main/webapp</directory>
-                <!--目录中的文件类型-->
+                &lt;!&ndash;目录中的文件类型&ndash;&gt;
                 <includes>
                     <include>**/*.xml</include>
                     <include>**/*.properties</include>
                     <include>**/*.js</include>
                 </includes>
-            </resource>
+            </resource>-->
         </resources>
     </build>
 

@@ -13,15 +13,15 @@
         ctx = "${ctx}";
 
 	</script>
-	<script type="text/javascript" src="./jst/jquery.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
-	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<%--<script type="text/JavaScript" src='<c:url value="/js/jquery.min.js"></c:url>'></script>
+	<script type="text/JavaScript" src='<c:url value="../js/jquery.min.js"></c:url>'></script>--%>
+
 	<script type="text/javascript" src="${ctx}./js/jquery.min.js"></script>
-	<script type="text/javascript" src="${ctx}/./jst/jquery.min.js"></script>
+	<%--<script type="text/javascript" src="${ctx}/./js/jquery.min.js"></script>
 	<script type="text/javascript" src="${ctx}/../js/jquery.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/jquery.min.js"></script>
-	<script type="text/javascript" src="${ctx}/jst/jquery.min.js"></script>
-	<script type="text/javascript" src="${ctx}/jst/j"></script>
+	<script type="text/javascript" src="${ctx}/js/jquery.min.js"></script>--%>
+
 
 
 </head>

@@ -18,7 +18,12 @@
 <!--    <context:property-placeholder location="classpath:dataBase.properties" />-->
 
     <mvc:annotation-driven/>
-    <!--<mvc:default-servlet-handler/>-->
+
+
+    <!--解决静态资源访问问题,以下两种mvc配置方式任选其一,或者在web.xml中配置-->
+    <!-- <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/js/**" location="/js/"/>-->
+
     <context:component-scan base-package="com.zx.demo"/>
    <!-- <context:component-scan base-package="com.zx.demo.dao.mybatis.*"/>-->
 
