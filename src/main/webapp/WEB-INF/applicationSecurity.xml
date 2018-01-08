@@ -60,7 +60,7 @@
 
         <remember-me  remember-me-cookie="appCk" key="zx" token-validity-seconds="10000" />
 
-        <logout
+        <logout delete-cookies="appCk"
                 logout-url="/logout"
                 logout-success-url="/login"/>
 

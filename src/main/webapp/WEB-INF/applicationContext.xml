@@ -15,8 +15,6 @@
 >
 
     <import resource="applicationSecurity.xml"/>
-<!--    <context:property-placeholder location="classpath:dataBase.properties" />-->
-
     <mvc:annotation-driven/>
 
 
