@@ -48,7 +48,7 @@
                 </includes>
             </resource>
 
-          <!--  <resource>
+           <!-- <resource>
                 &lt;!&ndash;需要打包的目录&ndash;&gt;
                 <directory>src/main/webapp</directory>
                 &lt;!&ndash;目录中的文件类型&ndash;&gt;
