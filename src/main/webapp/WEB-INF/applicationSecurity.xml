@@ -38,8 +38,8 @@
         <intercept-url pattern="/static/**" access="permitAll"/>
         <intercept-url pattern="/favicon.ico" access="permitAll"/>
        <!-- <intercept-url pattern="/**" access="hasAuthority('OP_ADMIN')"/>-->
-        <intercept-url pattern="/**" access="permitAll"/>
-      <!--  <intercept-url pattern="/**" access="hasRole('ADMIN')"/>-->
+        <!--<intercept-url pattern="/**" access="permitAll"/>-->
+        <intercept-url pattern="/**" access="hasRole('ADMIN')"/>
 
        <!-- <access-denied-handler />-->
 
@@ -54,8 +54,14 @@
 
         <csrf disabled="true"></csrf>
 
-        <session-management invalid-session-url="/login"  session-fixation-protection="newSession">
-            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+        <custom-filter position="CONCURRENT_SESSION_FILTER" ref="concurrencyFilter" />
+
+       <!-- <session-management invalid-session-url="/login"  session-authentication-error-url="/login" >
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" expired-url="/login"/>
+        </session-management>-->
+
+        <session-management session-authentication-strategy-ref="sas">
+
         </session-management>
 
         <remember-me  remember-me-cookie="appCk" key="zx" token-validity-seconds="10000" />

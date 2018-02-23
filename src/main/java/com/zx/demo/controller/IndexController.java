@@ -15,9 +15,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
 
@@ -46,7 +48,7 @@ public class IndexController {
     }
 
 
-    @GetMapping("/login")
+    @RequestMapping("/login")
     public String getLogin() {
         logger.info("进行登录");
         return "login";
@@ -107,5 +109,9 @@ public class IndexController {
         logger.info("error");
 
         return "error";
+    }
+
+    public ModelAndView test2(){
+        return null;
     }
 }
