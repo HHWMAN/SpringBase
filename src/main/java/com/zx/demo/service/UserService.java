@@ -14,16 +14,13 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public void addUser(){
-        User user = new User();
-        user.setUser_id("2");
-        user.setUsername("zx_mybatis");
-        user.setPassword("zx_mybatis");
-        /*user.setSex("m");
-        user.setRec_create_time("a");
-        user.setRec_creator("zx");
-        user.setRec_revisor("zx");
-        user.setRec_revisor_time("b");*/
-        userMapper.insert(user);
+    public int addUser(User user){
+       int result = userMapper.insert(user);
+       return result;
+    }
+
+    public int deleteUserById(String userId){
+        int result = userMapper.deleteByPrimaryKey(userId);
+        return result;
     }
 }

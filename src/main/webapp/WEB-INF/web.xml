@@ -29,28 +29,14 @@
 
 
 
-    <!-- 字符集过滤器 -->
-    <filter>
-        <filter-name>encodingFilter</filter-name>
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-<!--处理静态资源-->
+    <!--处理静态资源-->
     <servlet-mapping>
         <servlet-name>default</servlet-name >
         <url-pattern>/css/*</url-pattern>
         <url-pattern>/js/*</url-pattern>
         <url-pattern>/images/*</url-pattern>
+        <!--<url-pattern>/favicon.ico</url-pattern>-->
     </servlet-mapping>
-
 
     <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -76,6 +62,25 @@
         <servlet-name>ViewStatusMessages</servlet-name>
         <url-pattern>/lbClassicStatus</url-pattern>
     </servlet-mapping>
+
+
+
+
+
+
+    <!-- 字符集过滤器 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 
     <!--secutity入口-->

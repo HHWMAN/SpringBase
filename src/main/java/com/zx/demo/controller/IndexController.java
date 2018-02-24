@@ -5,6 +5,7 @@ package com.zx.demo.controller;
 import com.zx.demo.dao.UserDao;
 import com.zx.demo.dao.mybatis.UserMapper;
 
+import com.zx.demo.domain.mybatis.User;
 import com.zx.demo.security.AppRoleAuthority;
 import com.zx.demo.security.AppUserDetails;
 import com.zx.demo.service.UserService;
@@ -47,18 +48,6 @@ public class IndexController {
         return "hello, world! This com from spring!";
     }
 
-
-    @RequestMapping("/login")
-    public String getLogin() {
-        logger.info("进行登录");
-        return "login";
-    }
-
-    @GetMapping("/logout")
-    public String getLogout() {
-        logger.info("进行登出");
-        return "login";
-    }
 
   /*  @PreAuthorize("hasAuthority('USER')")*/
     @GetMapping("/index")
@@ -104,6 +93,37 @@ public class IndexController {
         return "demo";
     }
 
+
+
+
+    //正式使用方法
+    @RequestMapping("/favicon.ico")
+    public String getFavicon() {
+        logger.info("设置网页图标");
+        return "forward:/images/favicon.ico";
+    }
+
+
+    @RequestMapping("/login")
+    public String getLogin() {
+        logger.info("进行登录");
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String getLogout() {
+        logger.info("进行登出");
+        return "login";
+    }
+
+    @RequestMapping("/register")
+    public String registerUser(User user){
+        logger.info("进行注册");
+        userService.addUser(user);
+        return "login";
+    }
+
+
     @RequestMapping("/error")
     public String getError() {
         logger.info("error");
@@ -111,7 +131,9 @@ public class IndexController {
         return "error";
     }
 
-    public ModelAndView test2(){
-        return null;
-    }
+
+
+
+
+
 }

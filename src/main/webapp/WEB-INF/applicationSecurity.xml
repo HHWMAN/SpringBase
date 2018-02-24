@@ -19,21 +19,17 @@
     </global-method-security>
 
 
-    <!-- 配置不过滤的资源（静态资源及登录相关） -->
-    <http pattern="/**/*.css" security="none"/>
-    <http pattern="/**/*.jpg" security="none"/>
-    <http pattern="/**/*.jpeg" security="none"/>
-    <http pattern="/**/*.gif" security="none"/>
-    <http pattern="/**/*.png" security="none"/>
-    <http pattern="/**/*.jsp" security="none"/>
-    <http pattern="/**/*.js" security="none"/>
+    <!-- 配置不过滤的资源 -->
+    <http pattern="/css/**" security="none"/>
+    <http pattern="/js/**" security="none"/>
+    <http pattern="/images/**" security="none"/>
 
 
     <http  use-expressions="true" auto-config="false" >
         <intercept-url pattern="/login" access="permitAll"/>
+        <intercept-url pattern="/register" access="permitAll"/>
         <intercept-url pattern="/index" access="permitAll" />
         <intercept-url pattern="/js/**" access="permitAll" />
-        <intercept-url pattern="/error" access="permitAll"/>
         <intercept-url pattern="/error" access="permitAll"/>
         <intercept-url pattern="/static/**" access="permitAll"/>
         <intercept-url pattern="/favicon.ico" access="permitAll"/>

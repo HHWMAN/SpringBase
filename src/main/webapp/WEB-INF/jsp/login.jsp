@@ -22,10 +22,15 @@
         <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
         <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
         <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../favicon.ico"> 
+        <%--<link rel="shortcut icon" href="../favicon.ico">--%>
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+
+
+        <script>
+
+        </script>
     </head>
     <body>
         <div class="container">
@@ -71,23 +76,23 @@
                                 <h1> 注 册 </h1>
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u">请输入用户名</label>
-                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
+                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="mysuperusername690" />
                                 </p>
                                 <p>
                                     <label for="passwordsignup" class="youpasswd" data-icon="p">请输入密码 </label>
-                                    <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                    <input id="passwordsignup" name="password" required="required" type="password" placeholder="eg. X8df!90EO"/>
                                 </p>
                                 <p> 
                                     <label for="emailsignup" class="youmail" data-icon="e" >请输入邮箱</label>
-                                    <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> 
+                                    <input id="emailsignup" name="email" required="required" type="email" placeholder="mysupermail@mail.com"/>
                                 </p>
 
                                 <p> 
                                     <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">请确认密码 </label>
-                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                    <input id="passwordsignup_confirm" name="password_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
                                 </p>
                                 <p class="signin button"> 
-									<input type="submit" value="注册"/>
+									<input type="submit" value="注册" onclick="alert('点击注册')"/>
 								</p>
                                 <p class="change_link">  
 									已经注册 ?
