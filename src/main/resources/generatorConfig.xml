@@ -25,6 +25,7 @@
             <columnOverride column="password" property="password"/>
             <columnOverride column="sex" property="sex"/>
             <columnOverride column="age" property="age"/>
+            <columnOverride column="email" property="email"/>
             <columnOverride column="isExpired" property="isExpired"/>
             <columnOverride column="isEnabled" property="isEnabled"/>
             <columnOverride column="isLocked" property="isLocked"/>
