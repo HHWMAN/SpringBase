@@ -49,17 +49,22 @@
                         <div id="login" class="animate form">
                             <form id="loginForm" class="" action="${ctx}/login" method="post">
                                 <h1> 登 录 </h1>
-                                <p> 
-                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
+                                <p align="center" style="color:red">
+                                    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}">
+                                     <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+                                    </c:if>
                                 </p>
                                 <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                    <label for="username" class="uname" data-icon="u" > 请输入用户名 </label>
+                                    <input id="username" name="username" required="required" type="text" placeholder="myusername"/>
+                                </p>
+                                <p> 
+                                    <label for="password" class="youpasswd" data-icon="p"> 请输入密码 </label>
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
                                 <p class="keeplogin"> 
 									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-									<label for="loginkeeping">Keep me logged in</label>
+									<label for="loginkeeping">记住我</label>
 								</p>
                                 <p class="login button"> 
                                     <input type="submit" value="登录" />

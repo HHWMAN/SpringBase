@@ -14,6 +14,14 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd"
 >
 
+    <!-- 定义上下文返回的消息的国际化 -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+       <!-- <property name="basename" value="classpath:org/springframework/security/messages_zh_CN" />-->
+        <property name="basename" value="classpath:message/messages_zh_CN" />
+    </bean>
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
 
 
     <bean id="userDetailService"  class="com.zx.demo.security.AppUserDetailsService">
