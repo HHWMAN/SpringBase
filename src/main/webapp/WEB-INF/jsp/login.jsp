@@ -63,8 +63,8 @@
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
                                 <p class="keeplogin"> 
-									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-									<label for="loginkeeping">记住我</label>
+									<input type="checkbox" name="loginkeeping" id="rememberMe" value="loginkeeping" />
+									<label for="rememberMe">记住我</label>
 								</p>
                                 <p class="login button"> 
                                     <input type="submit" value="登录" />

@@ -2,6 +2,7 @@ package com.zx.demo.controller;
 
 //import ch.qos.logback.classic.LoggerContext;
 //import ch.qos.logback.core.util.StatusPrinter;
+import com.mysql.cj.api.Session;
 import com.zx.demo.dao.UserDao;
 import com.zx.demo.dao.mybatis.UserMapper;
 
@@ -15,13 +16,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 
@@ -43,8 +48,8 @@ public class IndexController {
    protected final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @RequestMapping("/hello")
-    public @ResponseBody
-    String test() {
+    @ResponseBody
+    public String test() {
         return "hello, world! This com from spring!";
     }
 
@@ -105,8 +110,10 @@ public class IndexController {
 
 
     @RequestMapping("/login")
-    public String getLogin() {
+    public String getLogin(HttpServletRequest request) {
         logger.info("进行登录");
+        /*HttpSession session= request.getSession();
+        session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);*/
         return "login";
     }
 
@@ -131,7 +138,12 @@ public class IndexController {
         return "error";
     }
 
+    @RequestMapping("/test")
+    public ModelMap getError(ModelMap test) {
+        logger.info("error");
 
+        return test;
+    }
 
 
 

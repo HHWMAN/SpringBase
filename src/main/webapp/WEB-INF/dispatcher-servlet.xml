@@ -30,11 +30,22 @@
         <property name="order" value="1" />
     </bean>-->
 
+    <!--视图解析器-->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
         <property name="order" value="2" />
     </bean>
+
+
+    <!--拦截器-->
+   <mvc:interceptors>
+       <!--<bean class="com.zx.demo.interceptor.TestInterceptor"></bean>-->
+       <mvc:interceptor>
+           <mvc:mapping path="/**"/>
+           <bean class="com.zx.demo.interceptor.TestInterceptor"></bean>
+       </mvc:interceptor>
+   </mvc:interceptors>
 
 </beans>
