@@ -23,7 +23,7 @@ public class TestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("经过测试拦截器preHandle");
-        return super.preHandle(request,response,handler);
+        return true;
     }
 
     @Override

@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
 
-    <beans:import resource="applicationSecurityBean.xml"></beans:import>
+    <!--<beans:import resource="applicationSecurityBean.xml"></beans:import>-->
 
 
     <!--启动方法权限验证-->
