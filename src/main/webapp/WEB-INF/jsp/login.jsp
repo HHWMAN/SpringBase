@@ -77,7 +77,7 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form id="registerForm" class="" action="${ctx}/register" method="post">
+                            <form id="registerForm" class="" action="${ctx}/register" method="post" enctype="multipart/form-data">
                                 <h1> 注 册 </h1>
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u">请输入用户名</label>
@@ -96,8 +96,13 @@
                                     <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">请确认密码 </label>
                                     <input id="passwordsignup_confirm" name="password_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
                                 </p>
+
+                                <p>
+                                    <label >上传头像 </label>
+                                    <input id="photo" name="uploadPhoto" required="required" type="file" />
+                                </p>
                                 <p class="signin button"> 
-									<input type="submit" value="注册" onclick="alert('点击注册')"/>
+									<input type="submit" value="注册" />
 								</p>
                                 <p class="change_link">  
 									已经注册 ?

@@ -13,6 +13,8 @@ import com.zx.demo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,13 +22,16 @@ import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.util.Collection;
 
 
@@ -123,10 +128,12 @@ public class IndexController {
         return "login";
     }
 
-    @RequestMapping("/register")
-    public String registerUser(User user){
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    public String registerUser(User user, @RequestParam("uploadPhoto") MultipartFile file, HttpServletRequest request) throws IOException {
         logger.info("进行注册");
-        userService.addUser(user);
+
+
+        //userService.addUser(user);
         return "login";
     }
 

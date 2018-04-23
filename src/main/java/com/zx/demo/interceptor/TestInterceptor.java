@@ -7,12 +7,15 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Calendar;
 
 /**
  * Created by ZX on 2017/11/14.
  */
 
 public class TestInterceptor extends HandlerInterceptorAdapter {
+    long startTime;
+    long endTime;
 
     public TestInterceptor() {
         super();
@@ -23,6 +26,7 @@ public class TestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("经过测试拦截器preHandle");
+        startTime= Calendar.getInstance().getTimeInMillis();
         return true;
     }
 
@@ -36,6 +40,9 @@ public class TestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
         System.out.println("经过测试拦截器afterCompletion");
+        endTime=Calendar.getInstance().getTimeInMillis();
+        Long cost = endTime-startTime;
+        System.out.println("花费时间："+cost);
         super.afterCompletion(request, response, handler, ex);
     }
 
