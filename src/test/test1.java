@@ -8,7 +8,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.servlet.handler.AbstractHandlerMethodMapping;
+import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
+import javax.xml.ws.spi.http.HttpContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +35,9 @@ public class test1 {
 
     @Autowired
     AuthorityMapper authorityMapper;
+
+    RequestMappingHandlerAdapter a;
+
 
     @Test
     public void testUser(){

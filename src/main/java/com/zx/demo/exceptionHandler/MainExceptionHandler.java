@@ -14,11 +14,12 @@ public class MainExceptionHandler {
 
     protected final Logger logger = LoggerFactory.getLogger(MainExceptionHandler.class);
 
-    @ExceptionHandler(value = {Exception.class})
+   /* @ExceptionHandler(value = {Exception.class})
     public String test(Exception e){
         logger.info("输出异常");
         logger.error(e.toString());
+        logger.info(e.getStackTrace().toString());
         return "redirect:error";
-    }
+    }*/
 
 }
