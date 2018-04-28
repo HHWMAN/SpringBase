@@ -3,6 +3,7 @@ import com.zx.demo.dao.mybatis.RoleAuthorityMapper;
 import com.zx.demo.dao.mybatis.UserRoleMapper;
 import com.zx.demo.domain.mybatis.*;
 import com.zx.demo.security.AppRoleAuthority;
+import com.zx.demo.utils.id.UUIDHexIdGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,17 @@ public class test1 {
         }
         System.out.println("开始输出");
         System.out.println(authorityList.toString());
+
+    }
+
+    @Test
+    public void testUUid(){
+
+        String uuid = UUIDHexIdGenerator.getInstance().generate().toString();
+        String uuid2 = UUIDHexIdGenerator.generate().toString();
+        System.out.println("---------------------------------");
+        System.out.println(uuid);
+        System.out.println(uuid2);
 
     }
 
