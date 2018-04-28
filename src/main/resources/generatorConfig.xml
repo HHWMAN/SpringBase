@@ -5,21 +5,22 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="C:\Users\ZX\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"></classPathEntry>
+            location="C:\Users\ZX\.m2\repository\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar"></classPathEntry>
     <context id="context1" targetRuntime="MyBatis3">
 
+        <!--connectionURL="jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC"-->
         <jdbcConnection
                 connectionURL="jdbc:mysql://localhost:3306/test?useSSL=false"
                 driverClass="com.mysql.jdbc.Driver" password="root" userId="root"/>
         <javaModelGenerator targetPackage="com.zx.demo.domain.mybatis"
-                            targetProject="src\main\java"/>
+                            targetProject="src\main\java" />
         <sqlMapGenerator targetPackage="com.zx.demo.dao.mybatis"
                          targetProject="src\main\java"/>
         <javaClientGenerator targetPackage="com.zx.demo.dao.mybatis"
                              targetProject="src\main\java" type="XMLMAPPER"/>
 
         
-        <table tableName="user">
+        <table tableName="user" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="user_id" property="user_id"/>
             <columnOverride column="username" property="username"/>
             <columnOverride column="password" property="password"/>
@@ -37,7 +38,7 @@
         </table>
 
 
-        <table tableName="role">
+        <table tableName="role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="role_id" property="role_id"/>
             <columnOverride column="role_name" property="role_name"/>
             <columnOverride column="role_description" property="role_description"/>
@@ -50,7 +51,7 @@
             <columnOverride column="rec_revisor_time" property="rec_revisor_time"/>
         </table>
 
-        <table tableName="authority">
+        <table tableName="authority" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="authority_id" property="authority_id"/>
             <columnOverride column="authority_sign" property="authority_sign"/>
             <columnOverride column="authority_name" property="authority_name"/>
@@ -65,7 +66,7 @@
         </table>
 
 
-        <table tableName="resource">
+        <table tableName="resource" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="resource_id" property="resource_id"/>
             <columnOverride column="resource_name" property="resource_name"/>
             <columnOverride column="resource_type" property="resource_type"/>
@@ -80,7 +81,7 @@
         </table>
 
 
-        <table tableName="user_role">
+        <table tableName="user_role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="user_role_id" property="user_role_id"/>
             <columnOverride column="user_id" property="user_id"/>
             <columnOverride column="role_id" property="role_id"/>
@@ -91,7 +92,7 @@
         </table>
 
 
-        <table tableName="role_authority">
+        <table tableName="role_authority" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="role_authority_id" property="role_authority_id"/>
             <columnOverride column="role_id" property="role_id"/>
             <columnOverride column="rauthority_id" property="rauthority_id"/>
@@ -102,7 +103,7 @@
         </table>
 
 
-        <table tableName="authority_resource">
+        <table tableName="authority_resource" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="authority_resource_id" property="authority_resource_id"/>
             <columnOverride column="authority_id" property="authority_id"/>
             <columnOverride column="resource_id" property="resource_id"/>
