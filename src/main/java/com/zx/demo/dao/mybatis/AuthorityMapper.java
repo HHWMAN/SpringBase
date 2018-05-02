@@ -1,7 +1,9 @@
 package com.zx.demo.dao.mybatis;
 
 import com.zx.demo.domain.mybatis.Authority;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AuthorityMapper {
     int deleteByPrimaryKey(String authority_id);
 

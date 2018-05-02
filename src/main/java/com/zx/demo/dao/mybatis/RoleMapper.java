@@ -1,7 +1,9 @@
 package com.zx.demo.dao.mybatis;
 
 import com.zx.demo.domain.mybatis.Role;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RoleMapper {
     int deleteByPrimaryKey(String role_id);
 

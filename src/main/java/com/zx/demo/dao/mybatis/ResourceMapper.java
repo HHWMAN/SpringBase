@@ -1,7 +1,9 @@
 package com.zx.demo.dao.mybatis;
 
 import com.zx.demo.domain.mybatis.Resource;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ResourceMapper {
     int deleteByPrimaryKey(String resource_id);
 

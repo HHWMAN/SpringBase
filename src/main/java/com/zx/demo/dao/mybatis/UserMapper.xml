@@ -17,20 +17,33 @@
     <result column="rec_revisor" jdbcType="VARCHAR" property="rec_revisor" />
     <result column="rec_revisor_time" jdbcType="VARCHAR" property="rec_revisor_time" />
   </resultMap>
+
   <sql id="Base_Column_List">
     user_id, username, password, sex, age, email, isExpired, isEnabled, isLocked, isCredentialsExpired, 
     rec_creator, rec_create_time, rec_revisor, rec_revisor_time
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
     where user_id = #{user_id,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
     where user_id = #{user_id,jdbcType=VARCHAR}
   </delete>
+
+
   <insert id="insert" parameterType="com.zx.demo.domain.mybatis.User">
     insert into user (user_id, username, password, 
       sex, age, email, isExpired, 
@@ -43,6 +56,8 @@
       #{rec_creator,jdbcType=VARCHAR}, #{rec_create_time,jdbcType=VARCHAR}, #{rec_revisor,jdbcType=VARCHAR}, 
       #{rec_revisor_time,jdbcType=VARCHAR})
   </insert>
+
+
   <insert id="insertSelective" parameterType="com.zx.demo.domain.mybatis.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -134,6 +149,8 @@
       </if>
     </trim>
   </insert>
+
+
   <update id="updateByPrimaryKeySelective" parameterType="com.zx.demo.domain.mybatis.User">
     update user
     <set>
@@ -179,6 +196,8 @@
     </set>
     where user_id = #{user_id,jdbcType=VARCHAR}
   </update>
+
+
   <update id="updateByPrimaryKey" parameterType="com.zx.demo.domain.mybatis.User">
     update user
     set username = #{username,jdbcType=VARCHAR},

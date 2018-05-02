@@ -35,9 +35,8 @@ public class AppUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		UserExample userExample = new UserExample();
-		userExample.createCriteria().andUsernameEqualTo(userName);
-        List<User> userList = userMapper.selectByExample(userExample);
+
+        List<User> userList = userMapper.selectByUserName(userName);
         if(userList.size()<1){
 			throw new UsernameNotFoundException("无此用户");
 		}else if(userList.size()>1){
@@ -56,25 +55,21 @@ public class AppUserDetailsService implements UserDetailsService {
 
 		//通过用户id查user、role对应
 		String userId = appUser.getUser_id();
-		UserRoleExample userRoleExample = new UserRoleExample();
-		userRoleExample.createCriteria().andUser_idEqualTo(userId);
-		List<UserRole> userRoleList = userRoleMapper.selectByExample(userRoleExample);
+
+		List<UserRole> userRoleList = userRoleMapper.selectByUserId(appUser.getUser_id());
 
 		//处理得到的对应关系，获得role
 		for(UserRole userRole:userRoleList){
 			String roleId = userRole.getRole_id();
 
 			//获得role
-			RoleExample roleExample = new RoleExample();
-			roleExample.createCriteria().andRole_idEqualTo(roleId);
-			Role role = roleMapper.selectByExample(roleExample).get(0);
+			Role role = roleMapper.selectByPrimaryKey(roleId);
 			//加入AppRole
 			authorityList.add(new AppRoleAuthority(role));
 
 			//通过role,查询对应的权限id
-			RoleAuthorityExample roleAuthorityExample = new RoleAuthorityExample();
-			roleAuthorityExample.createCriteria().andRole_idEqualTo(roleId);
-			List<RoleAuthority> roleAuthorities =  roleAuthorityMapper.selectByExample(roleAuthorityExample);
+
+			List<RoleAuthority> roleAuthorities =  roleAuthorityMapper.selectByRoleId(roleId);
 
 			for(RoleAuthority roleAuthority:roleAuthorities){
 
