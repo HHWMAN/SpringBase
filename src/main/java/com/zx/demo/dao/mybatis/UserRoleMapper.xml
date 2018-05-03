@@ -14,7 +14,7 @@
     user_role_id, user_id, role_id, rec_creator, rec_create_time, rec_revisor, rec_revisor_time
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultType="com.zx.demo.domain.mybatis.User">
     select 
     <include refid="Base_Column_List" />
     from user_role

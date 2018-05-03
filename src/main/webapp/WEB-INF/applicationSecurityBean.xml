@@ -20,6 +20,7 @@
        <!-- <property name="basename" value="classpath:org/springframework/security/messages_zh_CN" />-->
         <property name="basename" value="classpath:message/messages_zh_CN" />
     </bean>
+
     <bean id="localeResolver"
           class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
 
