@@ -8,6 +8,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.vote.AffirmativeBased;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.SecurityNamespaceHandler;
+import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.web.FilterChainProxy;
+import org.springframework.security.web.access.expression.WebExpressionVoter;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.servlet.handler.AbstractHandlerMethodMapping;
@@ -40,6 +52,19 @@ public class test1 {
 
     RequestMappingHandlerAdapter a;
 
+    AuthenticationManager b;
+    ProviderManager bb;
+    AbstractUserDetailsAuthenticationProvider bbb;
+    DaoAuthenticationProvider bbbb;
+    UserDetailsManager bbbbb;
+    UsernamePasswordAuthenticationFilter BBBBB;
+    AnonymousAuthenticationFilter dfasdf;
+    FilterSecurityInterceptor adfasd;
+    AffirmativeBased asdf;
+    WebExpressionVoter asdfwe;
+    FilterChainProxy asdfasg;
+
+    SecurityNamespaceHandler sdfas;
 
     @Test
     public void testUUid(){
