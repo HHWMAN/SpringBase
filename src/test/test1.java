@@ -14,6 +14,7 @@ import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.SecurityNamespaceHandler;
+import org.springframework.security.config.http.HttpSecurityBeanDefinitionParser;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
@@ -65,6 +66,8 @@ public class test1 {
     FilterChainProxy asdfasg;
 
     SecurityNamespaceHandler sdfas;
+
+    HttpSecurityBeanDefinitionParser asdgfsa;
 
     @Test
     public void testUUid(){
