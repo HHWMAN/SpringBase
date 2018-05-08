@@ -19,6 +19,7 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.test.context.ContextConfiguration;
@@ -68,6 +69,8 @@ public class test1 {
     SecurityNamespaceHandler sdfas;
 
     HttpSecurityBeanDefinitionParser asdgfsa;
+
+    AbstractAuthenticationProcessingFilter asdfsa;
 
     @Test
     public void testUUid(){

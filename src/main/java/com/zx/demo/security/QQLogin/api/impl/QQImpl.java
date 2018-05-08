@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zx.demo.controller.LoginController;
 import com.zx.demo.security.QQLogin.api.QQ;
 import com.zx.demo.security.QQLogin.api.QQUserInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.oauth2.TokenStrategy;
+
 
 /**
  * Created by ZX on 2018/5/7.

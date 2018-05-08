@@ -1,7 +1,7 @@
 package com.zx.demo.security.QQLogin.connect;
 
-import cn.merryyou.logback.social.qq.api.QQ;
-import cn.merryyou.logback.social.qq.api.QQUserInfo;
+import com.zx.demo.security.QQLogin.api.QQ;
+import com.zx.demo.security.QQLogin.api.QQUserInfo;
 import org.springframework.social.connect.ApiAdapter;
 import org.springframework.social.connect.ConnectionValues;
 import org.springframework.social.connect.UserProfile;
