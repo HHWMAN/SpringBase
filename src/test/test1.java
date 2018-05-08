@@ -15,6 +15,11 @@ import org.springframework.security.authentication.dao.AbstractUserDetailsAuthen
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.SecurityNamespaceHandler;
 import org.springframework.security.config.http.HttpSecurityBeanDefinitionParser;
+import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
@@ -71,6 +76,24 @@ public class test1 {
     HttpSecurityBeanDefinitionParser asdgfsa;
 
     AbstractAuthenticationProcessingFilter asdfsa;
+
+
+
+
+
+    //
+    AuthorizationServerConfigurer asdfa;
+
+    ClientDetailsServiceConfigurer bad;
+    AuthorizationServerSecurityConfigurer bdae;
+
+    AuthorizationServerEndpointsConfigurer basdfe;
+
+    AuthorizationServerTokenServices bae;
+
+
+
+
 
     @Test
     public void testUUid(){
