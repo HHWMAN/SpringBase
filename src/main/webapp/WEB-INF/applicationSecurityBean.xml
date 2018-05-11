@@ -38,6 +38,18 @@
     </bean>
 
 
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
+
+    <bean id="QQLoginFilter" class="com.zx.demo.security.QQ.QQLoginFilter">
+        <constructor-arg index="0" value="/loginQQ"/>
+        <constructor-arg index="1" ref="restTemplate"/>
+        <!--<property name="authenticationManager" ref=""/>-->
+    </bean>
+    <bean id="QQAuthenticationProvider" class="com.zx.demo.security.QQ.QQLoginProvider">
+        <constructor-arg index="0" ref="restTemplate"/>
+    </bean>
+
+
     <!-- 配置密码加密类 -->
     <!--<bean id="passwordEncode" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
     <bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">

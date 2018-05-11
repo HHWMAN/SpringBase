@@ -15,6 +15,14 @@ public class AppUserDetails implements UserDetails {
 
 	private Collection<GrantedAuthority>  appUserAuthorities; //应用用户权限
 
+	public AppUserDetails(User appUser, Collection<GrantedAuthority> appUserAuthorities) {
+		this.appUser = appUser;
+		this.appUserAuthorities = appUserAuthorities;
+	}
+
+	public AppUserDetails() {
+	}
+
 	public void setAppUserAuthorities(Collection<GrantedAuthority> appUserAuthorities) {
 		this.appUserAuthorities = appUserAuthorities;
 	}

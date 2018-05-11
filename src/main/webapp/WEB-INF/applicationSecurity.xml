@@ -27,6 +27,7 @@
 
     <http  use-expressions="true" auto-config="false" >
         <intercept-url pattern="/login" access="permitAll"/>
+        <intercept-url pattern="/loginQQ" access="permitAll"/>
         <intercept-url pattern="/register" access="permitAll"/>
         <intercept-url pattern="/index" access="permitAll" />
         <intercept-url pattern="/js/**" access="permitAll" />
@@ -60,7 +61,7 @@
 
         </session-management>
 
-        <remember-me  remember-me-cookie="appCk" key="zx" token-validity-seconds="10000" />
+        <remember-me  remember-me-cookie="appCk" key="zx" token-validity-seconds="10000" user-service-ref="userDetailService" />
 
         <logout delete-cookies="appCk"
                 logout-url="/logout"
@@ -69,7 +70,7 @@
         <access-denied-handler error-page="/error"/>
 
 
-       <!-- <custom-filter ref=""/>-->
+       <custom-filter ref="QQLoginFilter" before="FILTER_SECURITY_INTERCEPTOR" />
     </http>
 
 
@@ -78,6 +79,9 @@
                <!--<password-encoder ref="passwordEncode">
 
                </password-encoder>-->
+        </authentication-provider>
+        <authentication-provider ref="QQAuthenticationProvider">
+
         </authentication-provider>
     </authentication-manager>
 

@@ -69,6 +69,9 @@
                                 <p class="login button"> 
                                     <input type="submit" value="登录" />
 								</p>
+                                <p class="login button">
+                                  <a href="/loginQQ"><img src="../images/Connect_logo_4.png"></a>
+                                </p>
                                 <p class="change_link">
 									还未注册 ?
 									<a href="#toregister" class="to_register">成为会员</a>

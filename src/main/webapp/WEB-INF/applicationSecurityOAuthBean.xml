@@ -10,31 +10,27 @@
         http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 ">
 
-
-
-
-    <oauth2:client-details-service id="clientDetailsService">
-        <oauth2:client client-id="m1"
-                       authorized-grant-types="password,authorization_code,refresh_token,implicit"
-                       secret="s1" scope="read,write,trust" authorities="ROLE_USER"
-                       resource-ids="pic-resource" />
+   <!-- <oauth2:client-details-service id="clientDetailsService" >
+        <oauth2:client client-id="zx-client"
+                       authorized-grant-types="authorization_code,refresh_token,implicit"
+                       secret="zx-secret" scope="read,write,trust"      />
     </oauth2:client-details-service>
 
 
 
 
-    <!--OAuth2 提供方认证-->
+    &lt;!&ndash;OAuth2 提供方认证&ndash;&gt;
     <beans:bean id="oauth2ClientDetailsUserService"
                 class="org.springframework.security.oauth2.provider.client.ClientDetailsUserDetailsService">
         <beans:constructor-arg ref="clientDetailsService" />
     </beans:bean>
 
-    <authentication-manager id="clientAuthenticationManager">
+    <authentication-manager id="oauth2AuthenticationManager">
         <authentication-provider user-service-ref="oauth2ClientDetailsUserService" />
     </authentication-manager>
 
 
-    <!--OAuth2 提供方接收token解析存储-->
+    &lt;!&ndash;OAuth2 提供方接收token解析存储&ndash;&gt;
     <beans:bean id="tokenStore"
                 class="org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore">
     </beans:bean>
@@ -46,8 +42,70 @@
         <beans:property name="clientDetailsService" ref="clientDetailsService" />
     </beans:bean>
 
-    <!--OAuth2 发送方-->
+    &lt;!&ndash;处理访问成功&ndash;&gt;
+    <beans:bean id="oauth2AuthenticationEntryPoint"
+                class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint" />
+    &lt;!&ndash;处理访问拒绝&ndash;&gt;
+    <beans:bean id="oauth2AccessDeniedHandler"
+                class="org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler" />
+    &lt;!&ndash;处理认证点&ndash;&gt;
+    <beans:bean id="oauthUserApprovalHandler"
+                class="org.springframework.security.oauth2.provider.approval.DefaultUserApprovalHandler" />
+    &lt;!&ndash;处理访问控制&ndash;&gt;
+    <beans:bean id="oauth2AccessDecisionManager"
+                class="org.springframework.security.access.vote.UnanimousBased">
+        <beans:constructor-arg>
+            <beans:list>
+                <beans:bean
+                        class="org.springframework.security.oauth2.provider.vote.ScopeVoter" />
+                <beans:bean class="org.springframework.security.access.vote.RoleVoter" />
+                <beans:bean
+                        class="org.springframework.security.access.vote.AuthenticatedVoter" />
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>
 
+
+    <oauth2:authorization-server check-token-enabled="true"
+            client-details-service-ref="clientDetailsService" token-services-ref="tokenServices"
+            user-approval-handler-ref="oauthUserApprovalHandler">
+        <oauth2:authorization-code />
+        <oauth2:implicit />
+        <oauth2:refresh-token />
+        <oauth2:client-credentials />
+        <oauth2:password disabled="true"/>
+    </oauth2:authorization-server>
+
+
+    <oauth2:resource-server id="myResourceServer"
+                            resource-id="my-resource" token-services-ref="tokenServices" />
+
+
+    <http pattern="/resource/**" create-session="never"
+          entry-point-ref="oauth2AuthenticationEntryPoint"
+          access-decision-manager-ref="oauth2AccessDecisionManager">
+        <anonymous enabled="false" />
+        <intercept-url pattern="/resource/**" access="ROLE_USER,SCOPE_READ" />
+        <custom-filter ref="myResourceServer" before="PRE_AUTH_FILTER" />
+        <access-denied-handler ref="oauth2AccessDeniedHandler" />
+    </http>
+
+
+    <http pattern="/oauth/token" create-session="stateless"
+          authentication-manager-ref="oauth2AuthenticationManager"
+          entry-point-ref="oauth2AuthenticationEntryPoint">
+        <intercept-url pattern="/oauth/token" access="IS_AUTHENTICATED_FULLY" />
+        <anonymous enabled="false" />
+        <http-basic entry-point-ref="oauth2AuthenticationEntryPoint" />
+        <custom-filter ref="clientCredentialsTokenEndpointFilter"
+                       before="BASIC_AUTH_FILTER" />
+        <access-denied-handler ref="oauth2AccessDeniedHandler" />
+    </http>
+
+    <beans:bean id="clientCredentialsTokenEndpointFilter"
+                class="org.springframework.security.oauth2.provider.client.ClientCredentialsTokenEndpointFilter">
+        <beans:property name="authenticationManager" ref="oauth2AuthenticationManager" />
+    </beans:bean>-->
 
 
 </beans:beans>
