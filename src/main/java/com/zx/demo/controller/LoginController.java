@@ -124,11 +124,17 @@ public class LoginController {
         return "error";
     }
 
-    @RequestMapping("/test")
+   /* @RequestMapping("/test")
     public ModelMap getError(ModelMap test) {
         logger.info("error");
 
         return test;
+    }*/
+
+    @RequestMapping("/test")
+    public String vuePage() {
+        logger.info("vue");
+        return "test";
     }
 
 

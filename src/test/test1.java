@@ -27,6 +27,7 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.servlet.handler.AbstractHandlerMethodMapping;
@@ -64,6 +65,7 @@ public class test1 {
     AbstractUserDetailsAuthenticationProvider bbb;
     DaoAuthenticationProvider bbbb;
     UserDetailsManager bbbbb;
+    LogoutFilter et;
     UsernamePasswordAuthenticationFilter BBBBB;
     AnonymousAuthenticationFilter dfasdf;
     FilterSecurityInterceptor adfasd;

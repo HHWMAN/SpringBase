@@ -43,7 +43,7 @@
     <bean id="QQLoginFilter" class="com.zx.demo.security.QQ.QQLoginFilter">
         <constructor-arg index="0" value="/loginQQ"/>
         <constructor-arg index="1" ref="restTemplate"/>
-        <!--<property name="authenticationManager" ref=""/>-->
+        <property name="authenticationManager" ref="myAuthenticationManager"/>
     </bean>
     <bean id="QQAuthenticationProvider" class="com.zx.demo.security.QQ.QQLoginProvider">
         <constructor-arg index="0" ref="restTemplate"/>

@@ -26,6 +26,7 @@
 
 
     <http  use-expressions="true" auto-config="false" >
+        <intercept-url pattern="/test" access="permitAll"/>
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/loginQQ" access="permitAll"/>
         <intercept-url pattern="/register" access="permitAll"/>
@@ -74,7 +75,7 @@
     </http>
 
 
-    <authentication-manager  erase-credentials="false" >
+    <authentication-manager id="myAuthenticationManager"  erase-credentials="false" >
         <authentication-provider ref="authenticationProvider">
                <!--<password-encoder ref="passwordEncode">
 
