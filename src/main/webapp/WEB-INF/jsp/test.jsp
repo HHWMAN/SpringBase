@@ -42,6 +42,23 @@
 </div>
 
 
+<div id="components-demo">
+    <button-counter></button-counter>
+</div>
+
+
+<div id="blog-posts-events-demo">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post
+                v-on:enlarge-text="postFontSize += 0.1"
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+        ></blog-post>
+    </div>
+</div>
+
+
 
 </body>
 </html>
@@ -85,5 +102,37 @@
             }
         }
     })
+
+
+    Vue.component('button-counter', {
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    })
+
+    new Vue({ el: '#components-demo' })
+
+
+    Vue.component('blog-post', {
+        props: ['post'],
+        template: '<div class="blog-post"> <h3>{{ post.title }}</h3> <button v-on:click="$emit(\'enlarge-text\')" > Enlarge text </button> <div v-html="post.content"></div> </div>'
+    })
+
+    new Vue({
+        el: '#blog-posts-events-demo',
+        data: {
+            posts: [
+                { id: 1, title: 'My journey with Vue' },
+                { id: 2, title: 'Blogging with Vue' },
+                { id: 3, title: 'Why Vue is so fun' },
+            ],
+            postFontSize: 1
+        }
+
+    })
+
 
 </script>
