@@ -60,7 +60,7 @@ public class LoginController {
         *//*UserDaoImpl.addUser(user);*//*
         userMapper.insert(user);*/
         logger.info("add over");
-        return "index";
+        return "index2";
     }
 
 
@@ -137,6 +137,12 @@ public class LoginController {
         return "test";
     }
 
+
+    @RequestMapping("/test2")
+    public String vuePage2() {
+        logger.info("vue");
+        return "shopIndex";
+    }
 
 
 

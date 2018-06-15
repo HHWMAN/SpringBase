@@ -26,7 +26,6 @@
 
 
     <bean id="userDetailService"  class="com.zx.demo.security.AppUserDetailsService">
-
     </bean>
 
 
@@ -58,16 +57,16 @@
 
     <bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
 
-    <bean id="redirectSessionInformationExpiredStrategy" class="org.springframework.security.web.session.SimpleRedirectSessionInformationExpiredStrategy">
-        <constructor-arg name="invalidSessionUrl" value="/login" />
+    <bean id="concurrencyFilter" class="org.springframework.security.web.session.ConcurrentSessionFilter">
+        <constructor-arg name="sessionRegistry" ref="sessionRegistry"/>
+        <constructor-arg name="expiredUrl" value="/login"/>
     </bean>
 
-
-    <bean id="concurrencyFilter"
-                class="org.springframework.security.web.session.ConcurrentSessionFilter">
-        <constructor-arg name="sessionRegistry" ref="sessionRegistry" />
-        <constructor-arg name="sessionInformationExpiredStrategy" ref="redirectSessionInformationExpiredStrategy" />
-    </bean>
+<!--    <bean id="myAuthFilter" class=
+            "org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+        <property name="sessionAuthenticationStrategy" ref="sas" />
+        <property name="authenticationManager"  ref="myAuthenticationManager" />
+    </bean>-->
 
     <bean id="sas" class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
         <constructor-arg>
@@ -85,7 +84,6 @@
             </list>
         </constructor-arg>
     </bean>
-
 
 
 

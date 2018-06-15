@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.vote.AffirmativeBased;
+import org.springframework.security.access.vote.*;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
@@ -22,12 +22,20 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.FilterChainProxy;
+import org.springframework.security.web.FilterInvocation;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
+import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.context.SecurityContextPersistenceFilter;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.header.HeaderWriterFilter;
+import org.springframework.security.web.session.ConcurrentSessionFilter;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.servlet.handler.AbstractHandlerMethodMapping;
@@ -65,13 +73,33 @@ public class test1 {
     AbstractUserDetailsAuthenticationProvider bbb;
     DaoAuthenticationProvider bbbb;
     UserDetailsManager bbbbb;
+
+    ChannelProcessingFilter ade;
+    SecurityContextPersistenceFilter ee;
+    ConcurrentSessionFilter fea;
+    HeaderWriterFilter ad;
+    CsrfFilter asddf;
     LogoutFilter et;
     UsernamePasswordAuthenticationFilter BBBBB;
+    BasicAuthenticationFilter aaade;
+    RememberMeAuthenticationFilter adfeiii;
     AnonymousAuthenticationFilter dfasdf;
     FilterSecurityInterceptor adfasd;
+
+
+    AbstractAccessDecisionManager ea;
     AffirmativeBased asdf;
+    ConsensusBased aaaaaa;
+    UnanimousBased asdfetget;
+
     WebExpressionVoter asdfwe;
+    RoleHierarchyVoter ja;
+
+
     FilterChainProxy asdfasg;
+    FilterInvocation adfasdfasdfas;
+
+
 
     SecurityNamespaceHandler sdfas;
 
@@ -92,6 +120,10 @@ public class test1 {
     AuthorizationServerEndpointsConfigurer basdfe;
 
     AuthorizationServerTokenServices bae;
+
+
+
+
 
 
 

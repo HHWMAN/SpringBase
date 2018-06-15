@@ -29,6 +29,13 @@
 
         <resources>
             <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+            <include>**/*.*</include>
+            </includes>
+            </resource>
+
+            <resource>
                 <!--需要打包的目录-->
                 <directory>src/main/java</directory>
                 <!--目录中的文件类型-->

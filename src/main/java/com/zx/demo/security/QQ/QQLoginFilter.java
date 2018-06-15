@@ -31,17 +31,17 @@ public class QQLoginFilter extends AbstractAuthenticationProcessingFilter {
     /**
      * client_id 即在QQ互联上创建应用的APP ID
      */
-    private static final String CLIENT_ID = "自己应用的APP ID的值";
+    private static final String CLIENT_ID = "101386962";
 
     /**
      * client_secret 即在QQ互联上创建应用的APP Key
      */
-    private static final String CLIENT_SECRET = "自己应用的APP Key的值";
+    private static final String CLIENT_SECRET = "2a0f820407df400b84a854d054be8b6a";
 
     /**
      * redirect_uri 即在QQ互联上创建应用的回调地址
      */
-    private static final String REDIRECT_URI = "自己应用的回调地址，假设是http://www.abc.com/login/qq";
+    private static final String REDIRECT_URI = "http://www.ictgu.cn/login/qq";
 
     private static final String CODE = "code";
 

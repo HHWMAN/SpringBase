@@ -23,10 +23,12 @@
     <http pattern="/css/**" security="none"/>
     <http pattern="/js/**" security="none"/>
     <http pattern="/images/**" security="none"/>
+    <http pattern="/static/**" security="none"/>
 
 
     <http  use-expressions="true" auto-config="false" >
         <intercept-url pattern="/test" access="permitAll"/>
+        <intercept-url pattern="/test2" access="permitAll"/>
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/loginQQ" access="permitAll"/>
         <intercept-url pattern="/register" access="permitAll"/>
@@ -48,30 +50,26 @@
 
         />
 
+
         <http-basic/>
 
         <csrf disabled="true"></csrf>
 
+        <!--自定义session并发，同一账号只允许登录一次-->
         <custom-filter position="CONCURRENT_SESSION_FILTER" ref="concurrencyFilter" />
+       <!-- <custom-filter position="FORM_LOGIN_FILTER" ref="myAuthFilter" />-->
+        <session-management session-authentication-strategy-ref="sas"/>
 
-       <!-- <session-management invalid-session-url="/login"  session-authentication-error-url="/login" >
-            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" expired-url="/login"/>
-        </session-management>-->
+        <remember-me  remember-me-cookie="JSESSIONID" key="zx" token-validity-seconds="10000" user-service-ref="userDetailService" />
 
-        <session-management session-authentication-strategy-ref="sas">
-
-        </session-management>
-
-        <remember-me  remember-me-cookie="appCk" key="zx" token-validity-seconds="10000" user-service-ref="userDetailService" />
-
-        <logout delete-cookies="appCk"
+        <logout delete-cookies="JSESSIONID"
                 logout-url="/logout"
                 logout-success-url="/login"/>
 
         <access-denied-handler error-page="/error"/>
 
 
-       <custom-filter ref="QQLoginFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+       <!--<custom-filter ref="QQLoginFilter" before="FILTER_SECURITY_INTERCEPTOR" />-->
     </http>
 
 

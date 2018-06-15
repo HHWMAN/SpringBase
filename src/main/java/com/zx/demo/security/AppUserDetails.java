@@ -72,4 +72,21 @@ public class AppUserDetails implements UserDetails {
 	}
 
 
+	@Override
+	public boolean equals(Object rhs) {
+		/*if (rhs instanceof User) {
+			return appUser.getUser_id().equals(((User) rhs).getUser_id());
+		}
+		return false;*/
+		return true;
+	}
+
+	/**
+	 * Returns the hashcode of the {@code username}.
+	 */
+	@Override
+	public int hashCode() {
+		/*return appUser.getUser_id().hashCode();*/
+		return 1;
+	}
 }

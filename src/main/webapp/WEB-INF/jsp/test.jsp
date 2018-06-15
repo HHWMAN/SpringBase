@@ -58,12 +58,25 @@
     </div>
 </div>
 
+<div id="aaa">
+    <custom-input v-model="searchText"></custom-input>
+</div>
 
 
+<div id="bbb">
+    <demo
+            v-for="app in apps"
+            v-bind:pic="app.pic"
+            v-bind:name="app.name"
+            v-bind:version="app.version"
+            v-bind:desc="app.desc"
+    ></demo>
+</div>
 </body>
 </html>
 
 <script>
+
     var app = new Vue({el: '#app', data: {message: 'Hello Vue!'}})
 
     var app2 = new Vue({
@@ -134,5 +147,35 @@
 
     })
 
+
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: '<input v-bind:value="value" v-on:input="$emit(\'input\', $event.target.value)" >'
+    })
+
+    new Vue({
+        el: '#aaa',
+
+    })
+
+
+
+    Vue.component('demo', {
+        props: ['pic','name','version','desc'],
+        template: '<div> <div> <img :src="pic"></div> <div> <h3>{{name}}</h3> <h6>{{version}}</h6> <h6>{{desc}}</h6> </div> </div>'
+    })
+
+    new Vue({
+        el: '#bbb',
+        data:{
+            apps: [
+                { pic:'../images/Connect_logo_4.png', name: 'My journey with Vue',version:'1.0',desc:'aaa' },
+                { pic:'../images/favicon.ico', name: 'My journey with Vue2',version:'1.2',desc:'aaa2' },
+                { pic:'../images/favicon.ico', name: 'My journey with Vuee',version:'1.3',desc:'aaa3' },
+
+            ]
+        }
+
+    })
 
 </script>
