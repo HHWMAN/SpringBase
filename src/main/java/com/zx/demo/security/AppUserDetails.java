@@ -73,12 +73,15 @@ public class AppUserDetails implements UserDetails {
 
 
 	@Override
-	public boolean equals(Object rhs) {
-		/*if (rhs instanceof User) {
-			return appUser.getUser_id().equals(((User) rhs).getUser_id());
+	public boolean equals(Object userDetail) {
+		if (userDetail instanceof AppUserDetails) {
+			System.out.println("-------------------------------------");
+			System.out.println(appUser.getUser_id());
+			String tempId = ((AppUserDetails) userDetail).getAppUser().getUser_id();
+			System.out.println(tempId);
+			return this.appUser.getUser_id().equals(tempId);
 		}
-		return false;*/
-		return true;
+		return false;
 	}
 
 	/**
@@ -86,7 +89,7 @@ public class AppUserDetails implements UserDetails {
 	 */
 	@Override
 	public int hashCode() {
-		/*return appUser.getUser_id().hashCode();*/
-		return 1;
+		System.out.println(appUser.getUser_id().hashCode());
+		return appUser.getUser_id().hashCode();
 	}
 }
