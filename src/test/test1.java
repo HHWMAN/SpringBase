@@ -15,12 +15,14 @@ import org.springframework.security.authentication.dao.AbstractUserDetailsAuthen
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.SecurityNamespaceHandler;
 import org.springframework.security.config.http.HttpSecurityBeanDefinitionParser;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
@@ -31,11 +33,13 @@ import org.springframework.security.web.authentication.AnonymousAuthenticationFi
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
+import org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.header.HeaderWriterFilter;
 import org.springframework.security.web.session.ConcurrentSessionFilter;
+import org.springframework.security.web.session.SessionManagementFilter;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.servlet.handler.AbstractHandlerMethodMapping;
@@ -97,12 +101,15 @@ public class test1 {
 
 
     FilterChainProxy asdfasg;
+    DefaultSecurityFilterChain DF;
     FilterInvocation adfasdfasdfas;
 
 
 
     SecurityNamespaceHandler sdfas;
 
+
+    /*xml 配置解析器*/
     HttpSecurityBeanDefinitionParser asdgfsa;
 
     AbstractAuthenticationProcessingFilter asdfsa;
@@ -121,8 +128,10 @@ public class test1 {
 
     AuthorizationServerTokenServices bae;
 
+    ConcurrentSessionControlAuthenticationStrategy sa;
 
-
+    SessionManagementFilter saa;
+    SessionRegistryImpl saaa;
 
 
 

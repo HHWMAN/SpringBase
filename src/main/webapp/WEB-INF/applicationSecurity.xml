@@ -26,7 +26,7 @@
     <http pattern="/static/**" security="none"/>
 
 
-    <http  use-expressions="true" auto-config="false" >
+    <http  use-expressions="true" auto-config="true" >
         <intercept-url pattern="/test" access="permitAll"/>
         <intercept-url pattern="/test2" access="permitAll"/>
         <intercept-url pattern="/login" access="permitAll"/>
@@ -67,9 +67,10 @@
 
 
 
-        <remember-me  remember-me-cookie="JSESSIONID" key="zx" token-validity-seconds="10000" user-service-ref="userDetailService" />
+       <!-- <remember-me  remember-me-cookie="JSESSIONID" key="zx" token-validity-seconds="10000" user-service-ref="userDetailService" />-->
+        <remember-me  key="zx" token-validity-seconds="2419200" user-service-ref="userDetailService"/>
 
-        <logout delete-cookies="JSESSIONID"
+        <logout
                 logout-url="/logout"
                 logout-success-url="/login"/>
 
