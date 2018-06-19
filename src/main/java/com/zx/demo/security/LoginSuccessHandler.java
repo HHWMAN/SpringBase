@@ -21,13 +21,14 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			throws IOException, ServletException {
 
 		   Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-	        if (roles.contains("USER")) {
-	            response.sendRedirect("index");
-	        }else if(roles.contains("ADMIN")){
+	        if (roles.contains("ROLE_ADMIN")) {
+	            response.sendRedirect("test");
+	        }/*else if(roles.contains("ADMIN")){
 	        	response.sendRedirect("demo");
-	        }else{
-				System.out.println("权限异常");
-				throw new BadCredentialsException("权限异常");
+	        }*/else{
+				response.sendRedirect("demo");
+				/*System.out.println("权限异常");
+				throw new BadCredentialsException("权限异常");*/
 			}
 
 		AppUserDetails user = (AppUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

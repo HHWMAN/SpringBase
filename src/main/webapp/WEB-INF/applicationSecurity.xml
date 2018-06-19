@@ -68,7 +68,7 @@
 
 
        <!-- <remember-me  remember-me-cookie="JSESSIONID" key="zx" token-validity-seconds="10000" user-service-ref="userDetailService" />-->
-        <remember-me  key="zx" token-validity-seconds="2419200" user-service-ref="userDetailService"/>
+        <remember-me  key="zx" token-validity-seconds="2419200" user-service-ref="userDetailService" authentication-success-handler-ref="LoginSuccessHandler"/>
 
         <logout
                 logout-url="/logout"
