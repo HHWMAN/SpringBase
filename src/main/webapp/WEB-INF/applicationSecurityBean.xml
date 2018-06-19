@@ -55,18 +55,13 @@
         <property name="userPropertyToUse" value="username"/>
     </bean>-->
 
-    <bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
+    <!--session单点登录详细控制-->
+    <!--<bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
 
     <bean id="concurrencyFilter" class="org.springframework.security.web.session.ConcurrentSessionFilter">
         <constructor-arg name="sessionRegistry" ref="sessionRegistry"/>
         <constructor-arg name="expiredUrl" value="/login"/>
     </bean>
-
-<!--    <bean id="myAuthFilter" class=
-            "org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
-        <property name="sessionAuthenticationStrategy" ref="sas" />
-        <property name="authenticationManager"  ref="myAuthenticationManager" />
-    </bean>-->
 
     <bean id="sas" class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
         <constructor-arg>
@@ -84,7 +79,7 @@
             </list>
         </constructor-arg>
     </bean>
-
+-->
 
 
 
