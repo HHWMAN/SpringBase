@@ -31,16 +31,47 @@
     <context:property-placeholder location="./WEB-INF/dataBase.properties"/>
 
     <!-- dataSource 数据库连接池-->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="username" value="root"></property>
         <property name="password" value="root"></property>
         <property name="url" value="jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useSSL=false"></property>
-       <!-- <property name="driverClassName" value="${driverClassName}"></property>
+       &lt;!&ndash; <property name="driverClassName" value="${driverClassName}"></property>
         <property name="username" value="${username}"></property>
         <property name="password" value="${password}"></property>
-        <property name="url" value="${url}"></property>-->
+        <property name="url" value="${url}"></property>&ndash;&gt;
+    </bean>-->
+
+
+    <!--配置dbcp数据库连接池 在默认通过myeclipse生成的配置里，spring使用的是apache的dbcp连接池 -->
+    <bean name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${driverClassName}">
+        </property>
+        <property name="url" value="${url}">
+        </property>
+        <property name="username" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+
+        <!-- 连接池的配置 -->
+        <!--maxIdle: 最大空闲连接 -->
+        <property name="maxIdle" value="${dbcp.maxIdle}" />
+
+        <!--minIdle: 最小空闲连接 -->
+        <property name="minIdle" value="${dbcp.minIdle}" />
+
+        <!--maxActive: 最大连接数量 -->
+        <property name="maxTotal" value="${dbcp.maxActive}" />
+
+
+
+        <!--removeAbandonedTimeout: 超时时间(以秒数为单位) -->
+        <property name="removeAbandonedTimeout" value="${dbcp.removeAbandonedTimeout}" />
+
+        <!--maxWait: 超时等待时间以毫秒为单位 6000毫秒> -->
+        <property name="maxWaitMillis" value="${dbcp.maxWait}" />
     </bean>
+
+
 
     <!-- 配置jdbcTemplate -->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
