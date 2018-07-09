@@ -4,6 +4,7 @@ import com.zx.demo.dao.mybatis.UserRoleMapper;
 import com.zx.demo.domain.mybatis.*;
 import com.zx.demo.security.AppRoleAuthority;
 import com.zx.demo.utils.id.UUIDHexIdGenerator;
+import javafx.print.Collation;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -50,8 +51,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 import javax.sql.DataSource;
 import javax.xml.ws.spi.http.HttpContext;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ZX on 2017/12/15.
@@ -151,12 +151,35 @@ public class test1 {
         System.out.println(uuid);
         System.out.println(uuid2);
 
+        Collection a;
+
+        Map aa;
+        Arrays aaa;
+
+        Iterator ia;
+        Iterable iab;
+
     }
 
 
     @Test
     public void testDataSource(){
 
+
+    }
+
+
+    @Test
+    public void test1(){
+       ArrayList a = new ArrayList();
+       a.add("aaa");
+       a.add("bbb");
+        System.out.println(a.toString());
+        System.out.println(a.getClass().getName());
+        System.out.println(a.getClass().getCanonicalName());
+        System.out.println(a.getClass().getInterfaces());
+        for(Class inter:a.getClass().getInterfaces())
+            System.out.println(inter.getCanonicalName());
 
     }
 
