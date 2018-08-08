@@ -28,6 +28,9 @@ public class Extend extends Base {
     }
 
 
+    public static void test(){
+        System.out.println("test method");
+    }
     public static void main(String[] args) {
 
         System.out.println(Extend.entendInt);
@@ -50,6 +53,8 @@ public class Extend extends Base {
 
         System.out.println("实例对象获取class");
         test.getClass();
+
+        Extend.test();
 
       /* Base t= new Base();*/
 
