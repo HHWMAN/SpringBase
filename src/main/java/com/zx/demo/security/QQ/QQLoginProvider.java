@@ -3,8 +3,9 @@ package com.zx.demo.security.QQ;
 import com.google.gson.Gson;
 import com.zx.demo.domain.mybatis.User;
 import com.zx.demo.security.AppUserDetails;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
@@ -23,7 +24,7 @@ import java.util.Collection;
  */
 public class QQLoginProvider implements AuthenticationProvider {
 
-    protected final Logger log = LoggerFactory.getLogger(QQLoginFilter.class);
+    protected final Logger log = Logger.getLogger(QQLoginFilter.class);
 
 
     /**
@@ -44,7 +45,7 @@ public class QQLoginProvider implements AuthenticationProvider {
         String accessToken = qqLoginToken.getAccessToken();
         String oauthConsumerKey = qqLoginToken.getClientId();
         String userInfo = restTemplate.getForObject(String.format(GET_USER_INFO, accessToken, oauthConsumerKey, openId), String.class);
-        log.info("获取到的qq登录信息为:{}", userInfo);
+        log.info(userInfo);
         Gson gson = new Gson();
         QQUserInfo qqUserInfo = gson.fromJson(userInfo, QQUserInfo.class);
         if (qqUserInfo.getRet() < 0) {

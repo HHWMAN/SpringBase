@@ -8,8 +8,7 @@ import com.zx.demo.dao.mybatis.UserMapper;
 import com.zx.demo.domain.mybatis.User;
 import com.zx.demo.security.AppUserDetails;
 import com.zx.demo.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,7 +38,7 @@ public class RegisterController {
     @Autowired
     private UserService userService;
 
-   protected final Logger logger = LoggerFactory.getLogger(RegisterController.class);
+   protected final Logger logger = Logger.getLogger(RegisterController.class);
 
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)

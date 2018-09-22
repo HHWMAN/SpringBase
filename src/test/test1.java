@@ -51,6 +51,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 import javax.sql.DataSource;
 import javax.xml.ws.spi.http.HttpContext;
+import java.io.File;
 import java.util.*;
 
 /**
@@ -171,6 +172,9 @@ public class test1 {
 
     @Test
     public void test1(){
+
+       File aaaa = new File("");
+
        ArrayList a = new ArrayList();
        a.add("aaa");
        a.add("bbb");

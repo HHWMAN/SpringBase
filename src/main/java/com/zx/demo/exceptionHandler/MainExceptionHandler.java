@@ -1,7 +1,6 @@
 package com.zx.demo.exceptionHandler;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class MainExceptionHandler {
 
-    protected final Logger logger = LoggerFactory.getLogger(MainExceptionHandler.class);
+    protected final Logger logger = Logger.getLogger(MainExceptionHandler.class);
 
    /* @ExceptionHandler(value = {Exception.class})
     public String test(Exception e){

@@ -1,8 +1,9 @@
+<!--
 <?xml version="1.0"?>
 <configuration>
 
     <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />`
-    <!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
+    &lt;!&ndash; ch.qos.logback.core.ConsoleAppender 控制台输出 &ndash;&gt;
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} : %msg%n
@@ -15,13 +16,13 @@
     </logger>
 
 
-    <!-- 日志级别 -->
+    &lt;!&ndash; 日志级别 &ndash;&gt;
     <root>
-        <!-- 定义了ERROR和INFO级别的日志，分别在FILE文件和控制台输出 -->
+        &lt;!&ndash; 定义了ERROR和INFO级别的日志，分别在FILE文件和控制台输出 &ndash;&gt;
         <level value="INFO" />
-      <!--  <appender-ref ref="file" />-->
+      &lt;!&ndash;  <appender-ref ref="file" />&ndash;&gt;
         <appender-ref ref="console" />
     </root>
 
 
-</configuration>
+</configuration>-->
