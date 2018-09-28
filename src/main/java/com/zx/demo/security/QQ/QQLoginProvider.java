@@ -4,8 +4,9 @@ import com.google.gson.Gson;
 import com.zx.demo.domain.mybatis.User;
 import com.zx.demo.security.AppUserDetails;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
@@ -24,7 +25,7 @@ import java.util.Collection;
  */
 public class QQLoginProvider implements AuthenticationProvider {
 
-    protected final Logger log = Logger.getLogger(QQLoginFilter.class);
+    protected final Logger log = LogManager.getLogger(QQLoginFilter.class);
 
 
     /**

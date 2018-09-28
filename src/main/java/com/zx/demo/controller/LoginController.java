@@ -8,7 +8,9 @@ import com.zx.demo.dao.mybatis.UserMapper;
 import com.zx.demo.domain.mybatis.User;
 import com.zx.demo.security.AppUserDetails;
 import com.zx.demo.service.UserService;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -38,7 +40,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-   protected final Logger logger = Logger.getLogger(LoginController.class);
+   protected final Logger logger = LogManager.getLogger(LoginController.class);
 
     @RequestMapping("/hello")
     @ResponseBody

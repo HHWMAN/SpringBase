@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -25,7 +26,7 @@ import org.springframework.web.client.RestTemplate;
  */
 public class QQLoginFilter extends AbstractAuthenticationProcessingFilter {
 
-    protected final Logger log = Logger.getLogger(QQLoginFilter.class);
+    protected final Logger log = LogManager.getLogger(QQLoginFilter.class);
 
     /**
      * client_id 即在QQ互联上创建应用的APP ID
