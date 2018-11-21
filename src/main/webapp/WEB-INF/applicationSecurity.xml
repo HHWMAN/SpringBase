@@ -26,7 +26,7 @@
     <http pattern="/static/**" security="none"/>
 
 
-    <http  use-expressions="true" auto-config="true" >
+    <http  use-expressions="true" access-decision-manager-ref="MyAccessDecisionManager">
         <intercept-url pattern="/test" access="permitAll"/>
         <intercept-url pattern="/test2" access="permitAll"/>
         <intercept-url pattern="/login" access="permitAll"/>
@@ -81,7 +81,7 @@
     </http>
 
 
-    <authentication-manager id="myAuthenticationManager"  erase-credentials="false" >
+    <authentication-manager id="MyAuthenticationManager"  erase-credentials="false" >
         <authentication-provider ref="authenticationProvider">
                <!--<password-encoder ref="passwordEncode">
 

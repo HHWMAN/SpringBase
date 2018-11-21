@@ -25,6 +25,14 @@
           class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
 
 
+    <!--<bean id="filterSecurityInterceptor"      class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+        <property name="authenticationManager" ref="myAuthenticationManager"/>
+        <property name="accessDecisionManager" ref="myAccessDecisionManager"/>
+    </bean>-->
+
+
+
+
     <bean id="userDetailService"  class="com.zx.demo.security.AppUserDetailsService">
     </bean>
 
@@ -36,13 +44,23 @@
         <property name="saltSource" ref="saltSource" />-->
     </bean>
 
+    <bean id="MyAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+        <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.access.vote.RoleVoter"/>
+                <bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+                <bean class="org.springframework.security.web.access.expression.WebExpressionVoter"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
 
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
 
     <bean id="QQLoginFilter" class="com.zx.demo.security.QQ.QQLoginFilter">
         <constructor-arg index="0" value="/loginQQ"/>
         <constructor-arg index="1" ref="restTemplate"/>
-        <property name="authenticationManager" ref="myAuthenticationManager"/>
+        <property name="authenticationManager" ref="MyAuthenticationManager"/>
     </bean>
 
     <bean id="QQAuthenticationProvider" class="com.zx.demo.security.QQ.QQLoginProvider">
