@@ -44,7 +44,8 @@
         <property name="saltSource" ref="saltSource" />-->
     </bean>
 
-    <bean id="MyAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+   <!-- <bean id="MyAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">-->
+    <bean id="MyAccessDecisionManager" class="com.zx.demo.security.MyAccessDecisionManager">
         <constructor-arg>
             <list>
                 <bean class="org.springframework.security.access.vote.RoleVoter"/>
