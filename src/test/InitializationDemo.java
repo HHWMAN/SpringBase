@@ -31,13 +31,14 @@ class Son extends Father
     public Son()
     {
         System.out.println("我是儿子~");
-    }
-}
 
-public class InitializationDemo
-{
+
+    }
+
     public static void main(String[] args)
     {
         System.out.println("爸爸的岁数:" + Son.factor);  //入口
+        //new Son();
     }
 }
+

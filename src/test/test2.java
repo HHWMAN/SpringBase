@@ -1,15 +1,18 @@
 import com.zx.demo.dao.mybatis.AuthorityMapper;
 import com.zx.demo.dao.mybatis.RoleAuthorityMapper;
 import com.zx.demo.dao.mybatis.UserRoleMapper;
+import com.zx.demo.service.UserService;
 import com.zx.demo.utils.id.UUIDHexIdGenerator;
 import jdk.nashorn.internal.runtime.linker.Bootstrap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.HierarchicalBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.access.vote.*;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
@@ -88,6 +91,14 @@ public class test2 {
         String stra = "abc";
         String strb = "abc";
         System.out.println(stra == strb);
+
+    }
+
+    @Test
+    public void testSimpleLoad(){
+        BeanFactory bf = new XmlBeanFactory(new ClassPathResource("/WEB-INF/applicationContext.xml"));
+        UserService userService = (UserService) bf.getBean("UserService");
+        System.out.println(userService);
 
     }
 
