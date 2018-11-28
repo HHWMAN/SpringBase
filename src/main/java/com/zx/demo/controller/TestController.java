@@ -49,6 +49,17 @@ public class TestController {
         return helloWorld.printHelloWorld();
     }
 
+    @RequestMapping(value = "/test3",method = RequestMethod.GET)
+    @ResponseBody
+    public String test3() throws IOException {
+        return helloWorld.printString("aaaaaa");
+    }
+
+    @RequestMapping(value = "/test4",method = RequestMethod.GET)
+    @ResponseBody
+    public String test4() throws IOException {
+        return helloWorld.printString2("BBBBBB");
+    }
 
 
 }
