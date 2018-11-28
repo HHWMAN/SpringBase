@@ -8,6 +8,7 @@ import com.zx.demo.dao.mybatis.UserMapper;
 import com.zx.demo.domain.mybatis.User;
 import com.zx.demo.service.UserService;
 import com.zx.demo.test.HelloWorld;
+import com.zx.demo.test.HelloWorldImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +37,15 @@ public class TestController {
 
 
     @RequestMapping(value = "/test",method = RequestMethod.GET)
+    @ResponseBody
     public String test() throws IOException {
+        HelloWorld helloWorld1 = new HelloWorldImpl();
+        return helloWorld1.printHelloWorld();
+    }
+
+    @RequestMapping(value = "/test2",method = RequestMethod.GET)
+    @ResponseBody
+    public String test2() throws IOException {
         return helloWorld.printHelloWorld();
     }
 
