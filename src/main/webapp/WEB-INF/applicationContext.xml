@@ -17,8 +17,20 @@
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd"
 >
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <ref bean="testResolver"></ref>
+           <!-- <bean class="com.zx.demo.resolver.TestResolver"/>-->
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
     <aop:aspectj-autoproxy/>
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="testResolver">
+            <bean class="com.manqian.crm.resolver.JsonPathArgumentResolver"/>
+        </property>
+    </bean>
+
 
 
     <!--解决静态资源访问问题,以下两种mvc配置方式任选其一,或者在web.xml中配置-->

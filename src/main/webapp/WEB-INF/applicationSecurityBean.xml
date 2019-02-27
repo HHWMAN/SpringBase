@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:sec="http://www.springframework.org/schema/security"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -11,8 +12,26 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd"
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd"
 >
+
+
+    <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
+        <constructor-arg>
+            <list>
+                <sec:filter-chain pattern="/demo" filters="none"/>
+                <sec:filter-chain pattern="/testBBB" filters="none"/>
+                <sec:filter-chain pattern="/testAAA" filters="usernamePasswordAuthenticationFilter" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="usernamePasswordAuthenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+       <property name="authenticationManager" ref="MyAuthenticationManager"/>
+    </bean>
+
 
     <!-- 定义上下文返回的消息的国际化 -->
     <bean id="messageSource"

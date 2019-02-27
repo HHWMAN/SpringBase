@@ -52,15 +52,6 @@
     </servlet-mapping>
 
     <!--logback  status messages-->
-    <servlet>
-        <servlet-name>ViewStatusMessages</servlet-name>
-        <servlet-class>ch.qos.logback.classic.ViewStatusMessagesServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ViewStatusMessages</servlet-name>
-        <url-pattern>/lbClassicStatus</url-pattern>
-    </servlet-mapping>
 
 
 
@@ -80,7 +71,6 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
 
     <!--secutity入口-->
     <filter>

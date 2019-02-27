@@ -61,5 +61,10 @@ public class TestController {
         return helloWorld.printString2("BBBBBB");
     }
 
+    @RequestMapping(value = "/testResolver",method = RequestMethod.POST)
+    @ResponseBody
+    public String testResolver(@RequestParam String username) throws IOException {
+        return username;
+    }
 
 }

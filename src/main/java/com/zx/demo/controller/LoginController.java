@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
@@ -132,15 +133,20 @@ public class LoginController {
         return test;
     }*/
 
-    @RequestMapping("/test")
-    public String vuePage() {
+    @RequestMapping("/testAAA")
+    public String vuePage(HttpServletRequest request,HttpServletResponse response) {
         logger.info("vue");
         return "test";
     }
 
 
-    @RequestMapping("/test2")
+    @RequestMapping("/testBBB")
     public String vuePage2() {
+        try{
+            int a = 8/0;
+        }catch (Exception e){
+            logger.info(e);
+        }
         logger.info("vue");
         return "shopIndex";
     }
