@@ -13,15 +13,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+
+import static java.lang.System.*;
 
 
 /**
@@ -57,14 +57,20 @@ public class TestController {
 
     @RequestMapping(value = "/test4",method = RequestMethod.GET)
     @ResponseBody
-    public String test4() throws IOException {
+    public String test4(Model model) throws IOException {
         return helloWorld.printString2("BBBBBB");
     }
 
-    @RequestMapping(value = "/testResolver",method = RequestMethod.POST)
+    @RequestMapping(value = "/testResolver",method = RequestMethod.GET)
     @ResponseBody
-    public String testResolver(@RequestParam String username) throws IOException {
+    public String testResolver(String username) throws IOException {
         return username;
+    }
+
+    @ModelAttribute
+    public void test5(Model model){
+        model.addAttribute("aaaa","aaaa");
+        System.out.println("test5");
     }
 
 }

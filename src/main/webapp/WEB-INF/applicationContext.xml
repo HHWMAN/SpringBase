@@ -19,17 +19,21 @@
 
     <mvc:annotation-driven>
         <mvc:argument-resolvers>
-            <ref bean="testResolver"></ref>
-           <!-- <bean class="com.zx.demo.resolver.TestResolver"/>-->
+            <bean class="com.zx.demo.resolver.TestResolver"/>
         </mvc:argument-resolvers>
     </mvc:annotation-driven>
     <aop:aspectj-autoproxy/>
 
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="testResolver">
-            <bean class="com.manqian.crm.resolver.JsonPathArgumentResolver"/>
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="customArgumentResolvers">
+            <list>
+                <bean class="com.zx.demo.resolver.TestResolver"/>
+            </list>
         </property>
-    </bean>
+        <property name="order" value="-1"/>
+    </bean>-->
+
+
 
 
 

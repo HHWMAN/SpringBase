@@ -64,6 +64,11 @@ Spring用来代理filter的代理filter,未定义该类时，filter由容器创�
 %-4r: -代表左对齐,不加-默认右对齐，4代表最小宽度，r代表输出自应用启动到输出该log信息耗费的毫秒数
                                  
 
+HandlerMethodArgumentResolver:
+使用时需要注意不要和spring mvc默认的解析器冲突，
+即不要使用@RequestParam注解标记你想要解析的参数，与RequestParamMethodArgumentResolver冲突
+且不要用Map类型作为你想要解析的参数的类型，与RequestParamMapMethodArgumentResolver冲突
+详细spring 默认解析器见RequestMappingHandlerAdapter中的 getDefaultArgumentResolvers方法
 
 
 

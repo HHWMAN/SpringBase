@@ -6,7 +6,6 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <debug/>
 
     <!--启动方法权限验证-->
     <global-method-security secured-annotations="enabled" pre-post-annotations="enabled" jsr250-annotations="enabled" >
