@@ -70,5 +70,10 @@ HandlerMethodArgumentResolver:
 且不要用Map类型作为你想要解析的参数的类型，与RequestParamMapMethodArgumentResolver冲突
 详细spring 默认解析器见RequestMappingHandlerAdapter中的 getDefaultArgumentResolvers方法
 
+spring 默认
+自定义
+spring 默认兜底
+详细见 https://www.jianshu.com/p/f569c5705e8a
+
 
 
