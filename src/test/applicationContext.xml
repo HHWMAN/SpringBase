@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd"
+>
+
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <bean class="com.zx.demo.resolver.TestResolver"/>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+    <aop:aspectj-autoproxy/>
+
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="customArgumentResolvers">
+            <list>
+                <bean class="com.zx.demo.resolver.TestResolver"/>
+            </list>
+        </property>
+        <property name="order" value="-1"/>
+    </bean>-->
+
+
+
+
+
+    <!--解决静态资源访问问题,以下两种mvc配置方式任选其一,或者在web.xml中配置-->
+    <!-- <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/js/**" location="/js/"/>-->
+
+    <context:component-scan base-package="com.zx.demo"/>
+    <context:property-placeholder location="classpath:/WEB-INF/dataBase.properties"/>
+   <!-- <context:property-placeholder location="./WEB-INF/dataBase.properties"/>-->
+
+    <!-- dataSource 数据库连接池-->
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useSSL=false"></property>
+       &lt;!&ndash; <property name="driverClassName" value="${driverClassName}"></property>
+        <property name="username" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+        <property name="url" value="${url}"></property>&ndash;&gt;
+    </bean>-->
+
+
+    <!--配置dbcp数据库连接池 在默认通过myeclipse生成的配置里，spring使用的是apache的dbcp连接池 -->
+    <bean name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${driverClassName}"></property>
+        <property name="url" value="${url}"></property>
+        <property name="username" value="${dbcp.username}"></property>
+        <property name="password" value="${dbcp.password}"></property>
+
+
+        <!-- 连接池的配置 -->
+        <!--maxIdle: 最大空闲连接 -->
+        <property name="maxIdle" value="${dbcp.maxIdle}" />
+
+        <!--minIdle: 最小空闲连接 -->
+        <property name="minIdle" value="${dbcp.minIdle}" />
+
+        <!--maxActive: 最大连接数量 -->
+        <property name="maxTotal" value="${dbcp.maxActive}" />
+
+
+
+        <!--removeAbandonedTimeout: 超时时间(以秒数为单位) -->
+        <property name="removeAbandonedTimeout" value="${dbcp.removeAbandonedTimeout}" />
+
+        <!--maxWait: 超时等待时间以毫秒为单位 6000毫秒> -->
+        <property name="maxWaitMillis" value="${dbcp.maxWait}" />
+    </bean>
+
+
+
+    <!-- 配置jdbcTemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+
+    <!--配置事物管理器-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!--启动事务注解-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+   <!--以下是mybatis相关配置-->
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="plugins">
+            <list>
+                <bean id="ExamplePlugin" class="com.zx.demo.interceptor.MybatisInterceptor.ExamplePlugin" />
+            </list>
+        </property>
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:com/zx/demo/dao/mybatis/*.xml"></property>
+    </bean>
+
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage"
+                  value="com.zx.demo.dao.mybatis" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+
+    <!--拦截器-->
+    <mvc:interceptors>
+           <bean class="com.zx.demo.interceptor.TestInterceptor"></bean>
+       <!-- <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.zx.demo.interceptor.TestInterceptor"></bean>
+        </mvc:interceptor>-->
+    </mvc:interceptors>
+
+
+    <!--下载-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+        <!-- 支持的其中一个属性，支持的最大文件大小，以字节为单位 -->
+        <property name="maxUploadSize" value="10240000000"/>
+
+    </bean>
+
+</beans>
