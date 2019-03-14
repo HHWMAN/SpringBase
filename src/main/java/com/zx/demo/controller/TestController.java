@@ -61,6 +61,13 @@ public class TestController {
         return helloWorld.printString2("BBBBBB");
     }
 
+    @RequestMapping(value = "/test5",method = RequestMethod.GET)
+    @ResponseBody
+    public String test55(Model model) throws IOException {
+        HelloWorld temp = new HelloWorldImpl();
+        return temp.printString2("BBBBBB");
+    }
+
     @RequestMapping(value = "/testResolver",method = RequestMethod.GET)
     @ResponseBody
     public String testResolver(String username) throws IOException {

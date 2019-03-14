@@ -18,6 +18,8 @@ public class TestMQ {
         rabbitmqConnectionFactory.setVirtualHost("/");
         rabbitmqConnectionFactory.setUsername("guest");
         rabbitmqConnectionFactory.setPassword("guest");
+        //rabbitmqConnectionFactory.newConnection().createChannel().basicConsume()
+
         ConnectionFactory connectionFactory = new CachingConnectionFactory(rabbitmqConnectionFactory);
         //connectionFactory.createConnection().createChannel(true);
 
@@ -28,5 +30,7 @@ public class TestMQ {
         AmqpTemplate template = new RabbitTemplate(connectionFactory);
         template.convertAndSend("myqueue", "foo");
         String foo = (String) template.receiveAndConvert("myqueue");
+
+         RabbitTemplate rabbitTemplate;
     }
 }
